@@ -1,6 +1,29 @@
-## c8y-microservice-archetype
+## cumulocity-microservice-archetype
 
-Maven archetype to generate c8y microservice.
+Maven archetype to generate cumulocity microservice. Based on https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
+
+The project will contain of:
+
+```console
+project
+|-- pom.xml
+`-- src
+    |-- main
+    |  | -- java
+    |  |    `-- package
+    |  |         | -- App.java
+    |  |         | -- controller/ExampleController.java
+    |  |          `-- service/ExampleService.java
+    |  | -- resources
+    |  |    |-- application.properties
+    |  |    |-- application-dev.properties
+    |  |    |-- application-test.properties
+    |  |    |-- application-prod.properties
+    |  |     `-- banner.txt
+    |   `-- configuration
+    |       |-- cumulocity.json
+    |        `-- logging.xml
+```
 
 ## Run
 
@@ -15,6 +38,18 @@ Generate C8y miroservice project using interactive mode
 ```console
 mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype
 ```
+
+Running the microservice locally you have to add microservice service user to application-dev.properties
+
+```console
+C8Y.bootstrap.tenant=<tenant ID>
+C8Y.baseURL=<URL>
+C8Y.bootstrap.user=<service-user>
+C8Y.bootstrap.password=<service-user-password>
+```
+
+Hot to create an application and acquire microservice credentials see also https://cumulocity.com/guides/microservice-sdk/java/#java-microservice
+
 
 ## Authors 
 
