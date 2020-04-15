@@ -50,6 +50,11 @@ C8Y.bootstrap.password=<service-user-password>
 
 Hot to create an application and acquire microservice credentials see also https://cumulocity.com/guides/microservice-sdk/java/#java-microservice
 
+For building docker container please change property in pom file to:
+
+```console
+<c8y.docker.skip>false</c8y.docker.skip>
+```
 
 ## Authors 
 
