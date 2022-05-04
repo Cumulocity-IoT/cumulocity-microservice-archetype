@@ -11,12 +11,14 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 		<junit.version>4.13</junit.version>
-		<spring-boot-dependencies.version>1.5.17.RELEASE</spring-boot-dependencies.version>
+		<spring-boot-dependencies.version>2.5.4</spring-boot-dependencies.version>
 		<c8y.version>${c8yVersion}</c8y.version>
-		<microservice.name>${artifactId}</microservice.name>
+		<microservice.name>${microserviceName}</microservice.name>
 		<c8y.docker.skip>true</c8y.docker.skip>
 	</properties>
 
@@ -94,6 +96,7 @@
 						<configuration>
 							<name>${microservice.name}</name>
 							<image>${microservice.name}</image>
+							<key>${microservice.name}</key>
 							<encoding>UTF-8</encoding>
 							<skip>${c8y.docker.skip}</skip>
 						</configuration>
