@@ -38,10 +38,10 @@ under the License.
     <requiredProperty key="c8yVersion" >
       <defaultValue>1013.0.0</defaultValue>
     </requiredProperty>
-    <requiredProperty key="devC8yTenantId"/>
+    
+    <!-- Properies for creating microservice on specific tenant -->
     <requiredProperty key="devC8yBaseURL"/>
-    <requiredProperty key="devC8yBootstrapUser"/>
-    <requiredProperty key="devC8yBootstrapPassword"/>
+    <requiredProperty key="devC8yUserCredentialsBASE64"/>
   </requiredProperties>
 
   <fileSets>
