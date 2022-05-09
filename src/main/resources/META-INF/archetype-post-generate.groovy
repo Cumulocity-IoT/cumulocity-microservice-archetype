@@ -12,7 +12,6 @@ if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
 
 println("########## C8y Dev Tools, Local microservice runtime setup ################")
 println("Cumulocity URL: $devC8yBaseURL")
-println("User Credentials: $devC8yUserCredentialsBASE64")
 println("Microservice name: $microserviceName")
 
 def jsonSlurper = new JsonSlurper()
@@ -49,17 +48,16 @@ post1.setRequestProperty("Content-Type", "application/json")
 post1.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
 post1.getOutputStream().write(message1.getBytes("UTF-8"));
 def postRC1 = post1.getResponseCode();
-println(postRC1);
+if(!postRC1.equals(201)) {
+  println(postRC1);
+  return
+}
 
 def responseBody1 = post1.getInputStream().getText()
-println(responseBody1);
-
 def object1 = jsonSlurper.parseText(responseBody1)
-
 def msInternalId = object1.id
 def msTenantId = object1.owner.tenant.id
-println("Microservice internal ID: $msInternalId")
-println("Template Microservice id: $msTenantId")
+println("1. Application on Cumulocity Tenant: $msTenantId created with internal ID $msInternalId")
 
 
 // Step 1.2: Subscribe to application for tenant
@@ -75,14 +73,24 @@ post2.setRequestProperty("Content-Type", "application/json")
 post2.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
 post2.getOutputStream().write(message2.getBytes("UTF-8"));
 def postRC2 = post2.getResponseCode();
-println(postRC2);
+if(!postRC2.equals(201)) {
+  println(postRC2);
+  return
+}
+println("2. Application with id $msInternalId on Cumulocity Tenant: $msTenantId successfuly subscribed")
+
 
 //Step 1.3: Acquiring microservice credentials
 def get3 = new URL("$devC8yBaseURL/application/applications/$msInternalId/bootstrapUser").openConnection();
 get3.setRequestProperty("Content-Type", "application/json")
 get3.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
 def getRC3 = get3.getResponseCode();
-println(getRC3);
+if(!getRC3.equals(200)) {
+  println(getRC3);
+  return
+}
+println("3. Microservice credentials successfuly acquired for application $msInternalId")
+
 def responseBody3 = get3.getInputStream().getText()
 def object3 = jsonSlurper.parseText(responseBody3)
 
@@ -104,11 +112,10 @@ C8Y.bootstrap.user=$devC8yBootstrapUser
 C8Y.bootstrap.password=$devC8yBootstrapPassword
 C8Y.microservice.isolation=MULTI_TENANT
 """
-println(propertyFileText)
+
 Path projectPath = Paths.get(request.outputDirectory, request.artifactId)
-println(projectPath)
 def filePath = projectPath.toString() + "\\src\\main\\resources\\application-dev.properties"
-println("Write properties file: $filePath")
 File file = new File(filePath)
 file.write(propertyFileText)
+println("4. File successfully written to $filePath")
 println("########## C8y Dev Tools, Local microservice runtime setup ################")
