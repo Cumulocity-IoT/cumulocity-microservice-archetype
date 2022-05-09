@@ -29,7 +29,7 @@ public class ExampleController {
 		this.deviceService = deviceService;
 	}
 
-	@GetMapping(path = "/device/names", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/hello/devices", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<String>> getAllDeviceNames() {
         List<String> response = deviceService.getAllDeviceNames();
 		return new ResponseEntity<List<String>>(response, HttpStatus.OK);

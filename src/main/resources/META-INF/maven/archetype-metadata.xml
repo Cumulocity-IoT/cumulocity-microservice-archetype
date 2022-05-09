@@ -40,8 +40,12 @@ under the License.
     </requiredProperty>
     
     <!-- Properies for creating microservice on specific tenant -->
-    <requiredProperty key="devC8yBaseURL"/>
-    <requiredProperty key="devC8yUserCredentialsBASE64"/>
+    <requiredProperty key="devC8yBaseURL">
+      <defaultValue>null</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="devC8yUserCredentialsBASE64">
+      <defaultValue>null</defaultValue>
+    </requiredProperty>
   </requiredProperties>
 
   <fileSets>

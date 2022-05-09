@@ -4,6 +4,12 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.io.File 
 
+
+if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
+    println("Skip microservice setup on Cumulocity tenant!")
+    return
+}
+
 println("########## C8y Dev Tools, Local microservice runtime setup ################")
 println("Cumulocity URL: $devC8yBaseURL")
 println("User Credentials: $devC8yUserCredentialsBASE64")
@@ -54,6 +60,7 @@ def msInternalId = object1.id
 def msTenantId = object1.owner.tenant.id
 println("Microservice internal ID: $msInternalId")
 println("Template Microservice id: $msTenantId")
+
 
 // Step 1.2: Subscribe to application for tenant
 def post2 = new URL("$devC8yBaseURL/tenant/tenants/$msTenantId/applications").openConnection();
