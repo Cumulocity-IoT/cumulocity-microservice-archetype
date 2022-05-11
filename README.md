@@ -163,7 +163,7 @@ groupId: cumulocity.microservice
 version: 1.0.0-SNAPSHOT
 c8yVersion: 1013.0.0
 devC8yBaseURL: https://ms-template.eu-latest.cumulocity.com
-devC8yUserCredentialsBASE64: Basic dDEwMzM0OTk1L2FsZXhhbmRlci5wZXN0ZXJAc29mdHdhcmVhZy5jb206a2V5NEN1bXVsb2NpdHkyMDEy
+devC8yUserCredentialsBASE64: Basic XXXXX
 artifactId: cumulocity-microservice-hello-devices
 package: cumulocity.microservice.hello_devices
  Y: : Y
