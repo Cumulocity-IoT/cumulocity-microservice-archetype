@@ -4,7 +4,6 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.io.File 
 
-
 if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
     println("Skip microservice setup on Cumulocity tenant!")
     return
@@ -86,7 +85,7 @@ get3.setRequestProperty("Content-Type", "application/json")
 get3.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
 def getRC3 = get3.getResponseCode();
 if(!getRC3.equals(200)) {
-  println(getRC3);
+  prinn(getRC3);
   return
 }
 println("3. Microservice credentials successfuly acquired for application $msInternalId")
@@ -114,7 +113,7 @@ C8Y.microservice.isolation=MULTI_TENANT
 """
 
 Path projectPath = Paths.get(request.outputDirectory, request.artifactId)
-def filePath = projectPath.toString() + "\\src\\main\\resources\\application-dev.properties"
+def filePath = projectPath.toString() + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "application-dev.properties"
 File file = new File(filePath)
 file.write(propertyFileText)
 println("4. File successfully written to $filePath")

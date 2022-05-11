@@ -34,7 +34,9 @@ under the License.
     <requiredProperty key="version" >
       <defaultValue>1.0.0-SNAPSHOT</defaultValue>
     </requiredProperty>    
-    
+    <requiredProperty key="package" >
+      <defaultValue>cumulocity.microservice.${microserviceName}</defaultValue>
+    </requiredProperty>
     <requiredProperty key="c8yVersion" >
       <defaultValue>1013.0.0</defaultValue>
     </requiredProperty>
