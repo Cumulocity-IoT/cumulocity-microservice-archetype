@@ -41,8 +41,18 @@
 			<version>${c8y.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.nsn.cumulocity.model</groupId>
+			<artifactId>device-capability-model</artifactId>
+			<version>${c8y.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
