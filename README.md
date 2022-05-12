@@ -1,8 +1,8 @@
 ## cumulocity-microservice-archetype
 
-Maven archetype to generate cumulocity microservice. Based on https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
+Maven archetype to generate cumulocity microservice project. Based on https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
 
-The project will contain of:
+The project will contain following project structure:
 
 ```console
 project
@@ -29,6 +29,7 @@ The project contains also an example REST controller which must be replaced or r
 However the complete project is directly runnable without any additional changes. It uses also some best practices like:
 
 - using spring profiles (dev, test and prod)
+- using spring dev tool
 - using local configured application-dev.properties to run localy on development env
 - using Logback configuration file
 - using current java cumulocity microservice SDK
