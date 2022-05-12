@@ -11,8 +11,7 @@
 
   <name>Archetype - cumulocity-microservice-archetypes</name>
 
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/SoftwareAG/cumulocity-microservice-archetype</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -45,6 +44,9 @@
         <plugin>
           <artifactId>maven-archetype-plugin</artifactId>
           <version>3.0.1</version>
+          <configuration>
+             <skip>true</skip>
+          </configuration>  
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
