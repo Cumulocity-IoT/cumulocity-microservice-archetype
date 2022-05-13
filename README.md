@@ -114,8 +114,7 @@ Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 ```
 
-You can now just hit enter to continue with default or enter your own artificat id. Beaware that '-' can't be used at
-java packages. In that case you can replace '-' with '_'.
+You can now just hit enter to continue with default or enter your own artificat id. **!!! Beaware that '-' can't be used at java packages. In that case you must replace '-' with '_'. !!!**
 
 ### Step 4.1: Confirm your configuration with 'Y'
 
