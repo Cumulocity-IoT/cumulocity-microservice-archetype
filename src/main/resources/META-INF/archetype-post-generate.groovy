@@ -104,6 +104,7 @@ microservice.version=@project.version@
 
 #Cumulocity configuration for running localy and connecting to cumulocity
 application.name=$microserviceName
+application.key=$microserviceName
 C8Y.bootstrap.register=true
 C8Y.bootstrap.tenant=$devC8yTenantId
 C8Y.baseURL=$devC8yBaseURL

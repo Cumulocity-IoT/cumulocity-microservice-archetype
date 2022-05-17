@@ -117,7 +117,6 @@
 						<configuration>
 							<name>${microservice.name}</name>
 							<image>${microservice.name}</image>
-							<key>${microservice.name}</key>
 							<encoding>UTF-8</encoding>
 							<skip>${c8y.docker.skip}</skip>
 						</configuration>
