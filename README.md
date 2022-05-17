@@ -116,7 +116,7 @@ Define value for property 'package' cumulocity.microservice.hello-devices: : cum
 
 You can now just hit enter to continue with default or enter your own artificat id. **!!! Beaware that '-' can't be used at java packages. In that case you must replace '-' with '_'. !!!**
 
-### Step 4.1: Confirm your configuration with 'Y'
+### Step 4.1: Confirm your configuration with 'Y' without running post-generation script
 
 ```console
 [INFO] Generating project in Interactive mode
@@ -143,7 +143,7 @@ package: cumulocity.microservice.hello_devices
 
 Now you have created your microservice project successfully! However, you could configure even more and run the post-generation script. To do so, you have to initialize devC8yBaseURL and devC8yUserCredentialsBASE64.
 
-### Step 4.2: Confirm your configuration with 'N'
+### Step 4.2: Confirm your configuration with 'N' with running post-generation script
 
 And repeate step 1 - 3 and insert devC8yBaseURL and devC8yUserCredentialsBASE64
 
