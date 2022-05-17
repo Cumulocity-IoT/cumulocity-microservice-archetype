@@ -24,8 +24,29 @@ under the License.
   name="${artifactId}">
 
   <requiredProperties>
+    <requiredProperty key="microserviceName"/>
+    <requiredProperty key="groupId" >
+      <defaultValue>cumulocity.microservice</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="artifactId" >
+      <defaultValue>cumulocity-microservice-${microserviceName}</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="version" >
+      <defaultValue>1.0.0-SNAPSHOT</defaultValue>
+    </requiredProperty>    
+    <requiredProperty key="package" >
+      <defaultValue>cumulocity.microservice.${microserviceName}</defaultValue>
+    </requiredProperty>
     <requiredProperty key="c8yVersion" >
-      <defaultValue>1005.0.7</defaultValue>
+      <defaultValue>1013.0.0</defaultValue>
+    </requiredProperty>
+    
+    <!-- Properies for creating microservice on specific tenant -->
+    <requiredProperty key="devC8yBaseURL">
+      <defaultValue>null</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="devC8yUserCredentialsBASE64">
+      <defaultValue>null</defaultValue>
     </requiredProperty>
   </requiredProperties>
 

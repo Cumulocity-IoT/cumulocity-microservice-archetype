@@ -11,12 +11,14 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 		<junit.version>4.13</junit.version>
-		<spring-boot-dependencies.version>1.5.17.RELEASE</spring-boot-dependencies.version>
+		<spring-boot-dependencies.version>2.5.4</spring-boot-dependencies.version>
 		<c8y.version>${c8yVersion}</c8y.version>
-		<microservice.name>${artifactId}</microservice.name>
+		<microservice.name>${microserviceName}</microservice.name>
 		<c8y.docker.skip>true</c8y.docker.skip>
 	</properties>
 
@@ -39,8 +41,18 @@
 			<version>${c8y.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.nsn.cumulocity.model</groupId>
+			<artifactId>device-capability-model</artifactId>
+			<version>${c8y.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -48,6 +60,17 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
