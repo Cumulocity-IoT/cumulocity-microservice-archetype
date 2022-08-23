@@ -18,9 +18,9 @@ def jsonSlurper = new JsonSlurper()
 // Step 1.1: Create application on Cumulocity Tenant
 def post1 = new URL("$devC8yBaseURL/application/applications").openConnection();
 def message1 = """{
-  "key": "$microserviceName",
-  "name": "$microserviceName",
-  "contextPath": "$microserviceName",
+  "key": "$microserviceName-dev",
+  "name": "$microserviceName-dev",
+  "contextPath": "$microserviceName-dev",
   "type": "MICROSERVICE",
   "manifest":{},	
 	"requiredRoles": [
@@ -90,6 +90,8 @@ if(!getRC3.equals(200)) {
 }
 println("3. Microservice credentials successfuly acquired for application $msInternalId")
 
+
+//Step 1.4: write properties file for dev profile
 def responseBody3 = get3.getInputStream().getText()
 def object3 = jsonSlurper.parseText(responseBody3)
 
@@ -103,8 +105,8 @@ c8y.version=@c8y.version@
 microservice.version=@project.version@
 
 #Cumulocity configuration for running localy and connecting to cumulocity
-application.name=$microserviceName
-application.key=$microserviceName
+application.name=$microserviceName-dev
+application.key=$microserviceName-dev
 C8Y.bootstrap.register=true
 C8Y.bootstrap.tenant=$devC8yTenantId
 C8Y.baseURL=$devC8yBaseURL
