@@ -66,6 +66,12 @@ Install archetype localy in your local maven repository
 mvn install
 ```
 
+Go to the folder you want to generate the project
+
+```console
+cd ..
+```
+
 Generate C8y miroservice project using interactive mode
 
 ```console
