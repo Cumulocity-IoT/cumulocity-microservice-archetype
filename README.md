@@ -220,6 +220,9 @@ For building docker container please change property in pom file to:
 ```console
 <c8y.docker.skip>false</c8y.docker.skip>
 ```
+## Live Demo
+
+https://youtu.be/2j21ULZbtlg
 
 ## Authors 
 
