@@ -19,12 +19,15 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+<archetype-descriptor xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
   name="${artifactId}">
 
   <requiredProperties>
-    <requiredProperty key="microserviceName"/>
+    <requiredProperty key="microserviceName">
+      <!-- When naming your microservice application use only lower-case letters, digits and dashes. The maximum length for the name is 23 characters. -->
+      <validationRegex>^[a-z0-9-]{0,23}$</validationRegex>
+    </requiredProperty>
     <requiredProperty key="groupId" >
       <defaultValue>cumulocity.microservice</defaultValue>
     </requiredProperty>
