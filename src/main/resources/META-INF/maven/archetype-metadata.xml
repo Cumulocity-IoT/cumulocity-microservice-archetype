@@ -26,7 +26,7 @@ under the License.
   <requiredProperties>
     <requiredProperty key="microserviceName">
       <!-- When naming your microservice application use only lower-case letters, digits and dashes. The maximum length for the name is 23 characters. -->
-      <validationRegex>^[a-z0-9-]{0,23}$</validationRegex>
+      <validationRegex>^[a-z0-9-]{1,23}$</validationRegex>
     </requiredProperty>
     <requiredProperty key="groupId" >
       <defaultValue>cumulocity.microservice</defaultValue>
