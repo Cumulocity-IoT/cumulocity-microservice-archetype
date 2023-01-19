@@ -38,7 +38,7 @@ under the License.
       <defaultValue>cumulocity.microservice.${microserviceName}</defaultValue>
     </requiredProperty>
     <requiredProperty key="c8yVersion" >
-      <defaultValue>1013.0.0</defaultValue>
+      <defaultValue>1015.334.0</defaultValue>
     </requiredProperty>
     
     <!-- Properies for creating microservice on specific tenant -->
@@ -60,8 +60,12 @@ under the License.
     <fileSet filtered="true" packaged="false">
       <directory>src/main/resources</directory>
     </fileSet>
+    <fileSet filtered="true" packaged="false">
+      <directory>src/main/docker</directory>
+    </fileSet>
     <fileSet filtered="true" packaged="true">
       <directory>src/test/java</directory>
     </fileSet>
+
   </fileSets>
 </archetype-descriptor>

@@ -66,6 +66,12 @@ Install archetype localy in your local maven repository
 mvn install
 ```
 
+Go to the folder you want to generate the project
+
+```console
+cd ..
+```
+
 Generate C8y miroservice project using interactive mode
 
 ```console
@@ -144,14 +150,12 @@ package: cumulocity.microservice.hello_devices
 Now you have created your microservice project successfully! However, you could configure even more and run the post-generation script. To do so, you have to initialize devC8yBaseURL and devC8yUserCredentialsBASE64.
 
 _IMPORTANT!!!_
-If you haven't setup your application-dev.properties to a specific tenant the predefined unit test will not succeed! This unit test start the spring boot application and checks if the application is successfully starting. The microservice can't start if the c8y configuration isn't setup. However you can build with skipping the test by:
 
+If you haven't setup your application-dev.properties to a specific tenant, the predefined unit test will not succeed! This unit test is starting the spring boot application and checks if the application is successfully starting. The microservice can't start if the c8y configuration isn't setup. However you can build with skipping the test by:
 
 ```
 mvn clean install -Dmaven.test.skip=true
 ```
-
-
 
 ### Step 4.2: Confirm your configuration with 'N' with running post-generation script
 
@@ -217,6 +221,9 @@ For building docker container please change property in pom file to:
 ```console
 <c8y.docker.skip>false</c8y.docker.skip>
 ```
+## Live Demo
+
+https://youtu.be/2j21ULZbtlg
 
 ## Authors 
 
