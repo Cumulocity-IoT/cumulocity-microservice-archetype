@@ -18,9 +18,9 @@ def jsonSlurper = new JsonSlurper()
 // Step 1.1: Create application on Cumulocity Tenant
 def post1 = new URL("$devC8yBaseURL/application/applications").openConnection();
 def message1 = """{
-  "key": "$microserviceName-dev",
-  "name": "$microserviceName-dev",
-  "contextPath": "$microserviceName-dev",
+  "key": "$microserviceName",
+  "name": "$microserviceName",
+  "contextPath": "$microserviceName",
   "type": "MICROSERVICE",
   "manifest":{},	
 	"requiredRoles": [
@@ -49,8 +49,12 @@ post1.getOutputStream().write(message1.getBytes("UTF-8"));
 def postRC1 = post1.getResponseCode();
 if(!postRC1.equals(201)) {
   println(postRC1);
+  if(postRC1.equals(422)) {
+    println("please check your application name, maybe the name is to long");
+  }
   return
 }
+
 
 def responseBody1 = post1.getInputStream().getText()
 def object1 = jsonSlurper.parseText(responseBody1)
@@ -105,8 +109,8 @@ c8y.version=@c8y.version@
 microservice.version=@project.version@
 
 #Cumulocity configuration for running localy and connecting to cumulocity
-application.name=$microserviceName-dev
-application.key=$microserviceName-dev
+application.name=$microserviceName
+application.key=$microserviceName
 C8Y.bootstrap.register=true
 C8Y.bootstrap.tenant=$devC8yTenantId
 C8Y.baseURL=$devC8yBaseURL
