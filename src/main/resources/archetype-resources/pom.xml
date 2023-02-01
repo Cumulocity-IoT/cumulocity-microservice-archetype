@@ -49,11 +49,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+		<!-- Not working with spring dev tools, see issue https://github.com/SoftwareAG/cumulocity-microservice-archetype/issues/11
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		 -->
 
 		<dependency>
 			<groupId>junit</groupId>
