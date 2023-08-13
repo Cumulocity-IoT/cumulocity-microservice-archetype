@@ -41,7 +41,7 @@ under the License.
       <defaultValue>cumulocity.microservice.${microserviceName}</defaultValue>
     </requiredProperty>
     <requiredProperty key="c8yVersion" >
-      <defaultValue>1015.334.0</defaultValue>
+      <defaultValue>1017.0.276</defaultValue>
     </requiredProperty>
     
     <!-- Properies for creating microservice on specific tenant -->
