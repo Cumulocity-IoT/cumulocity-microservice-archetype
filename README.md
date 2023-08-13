@@ -1,6 +1,6 @@
 ## cumulocity-microservice-archetype
 
-Maven archetype to generate cumulocity microservice project. Based on https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
+Maven archetype to generate cumulocity microservice project. Based on https://github.com/SoftwareAG/cumulocity-clients-java and https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
 
 The project will contain following project structure:
 
