@@ -29,11 +29,11 @@ The project contains also an example REST controller which must be replaced or r
 However the complete project is directly runnable without any additional changes. It uses also some best practices like:
 
 - using spring profiles (dev, test and prod)
-- using spring dev tool
 - using local configured application-dev.properties to run localy on development env
 - using Logback configuration file
-- using current java cumulocity microservice SDK
+- using current java cumulocity microservice SDK + configuration via cumulocity.json
 - using custom banner with cumulocity SDK version
+- using JUnit 5 and SpringBootTest to check if context load is successful
 
 In order to make it even faster to setup your project, the archetype contains a post-generation script which registers your microservice automatically on your tenant. This step is optional.
 
