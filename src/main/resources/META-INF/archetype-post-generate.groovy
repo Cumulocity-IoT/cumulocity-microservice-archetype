@@ -3,6 +3,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.io.File 
+import java.net.InetAddress
 
 if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
     println("Skip microservice setup on Cumulocity tenant!")
@@ -12,15 +13,19 @@ if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
 println("########## C8y Dev Tools, Local microservice runtime setup ################")
 println("Cumulocity URL: $devC8yBaseURL")
 println("Microservice name: $microserviceName")
+String hostname = InetAddress.getLocalHost().getHostName()
+String inputString = hostname.length() > 23 ? hostname.substring(0, 23) : hostname
+String microserviceNameDev = microserviceName.length() > 19 ? microservice.substring(0, 19) + "-dev" : microserviceName + "-dev";
+println("Generate microservice representation for hostname: $microserviceNameDev")
 
 def jsonSlurper = new JsonSlurper()
 
 // Step 1.1: Create application on Cumulocity Tenant
 def post1 = new URL("$devC8yBaseURL/application/applications").openConnection();
 def message1 = """{
-  "key": "$microserviceName",
-  "name": "$microserviceName",
-  "contextPath": "$microserviceName",
+  "key": "$microserviceNameDev",
+  "name": "$microserviceNameDev",
+  "contextPath": "$microserviceNameDev",
   "type": "MICROSERVICE",
   "manifest":{},	
 	"requiredRoles": [
@@ -50,7 +55,9 @@ def postRC1 = post1.getResponseCode();
 if(!postRC1.equals(201)) {
   println(postRC1);
   if(postRC1.equals(422)) {
-    println("please check your application name, maybe the name is to long");
+    println("unprocessable content! Microservice application name incorrect. Please use only lower-case letters, digits and dashes. Maximum length is 23 characters.")
+    println(message1)
+    println("please check your application name, maybe the name is to long")
   }
   return
 }
@@ -77,7 +84,7 @@ post2.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
 post2.getOutputStream().write(message2.getBytes("UTF-8"));
 def postRC2 = post2.getResponseCode();
 if(!postRC2.equals(201)) {
-  println(postRC2);
+  println(postRC2)
   return
 }
 println("2. Application with id $msInternalId on Cumulocity Tenant: $msTenantId successfuly subscribed")
@@ -109,8 +116,8 @@ c8y.version=@c8y.version@
 microservice.version=@project.version@
 
 #Cumulocity configuration for running localy and connecting to cumulocity
-application.name=$microserviceName
-application.key=$microserviceName
+application.name=$microserviceNameDev
+application.key=$microserviceNameDev
 C8Y.bootstrap.register=true
 C8Y.bootstrap.tenant=$devC8yTenantId
 C8Y.baseURL=$devC8yBaseURL
