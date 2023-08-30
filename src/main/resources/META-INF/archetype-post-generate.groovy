@@ -3,7 +3,6 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.io.File 
-import java.net.InetAddress
 
 if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
     println("Skip microservice setup on Cumulocity tenant!")
@@ -13,8 +12,6 @@ if (devC8yBaseURL == "null" && devC8yUserCredentialsBASE64 == "null") {
 println("########## C8y Dev Tools, Local microservice runtime setup ################")
 println("Cumulocity URL: $devC8yBaseURL")
 println("Microservice name: $microserviceName")
-String hostname = InetAddress.getLocalHost().getHostName()
-String inputString = hostname.length() > 23 ? hostname.substring(0, 23) : hostname
 String microserviceNameDev = microserviceName.length() > 19 ? microservice.substring(0, 19) + "-dev" : microserviceName + "-dev";
 println("Generate microservice representation for hostname: $microserviceNameDev")
 
