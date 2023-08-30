@@ -197,6 +197,13 @@ and build the project:
 mvn install
 ```
 
+and run spring boot application locally with "dev" profile
+
+```console
+java -Dspring.profiles.active=dev -jar cumulocity-microservice-hello-devices-1.0.0-SNAPSHOT.jar
+```
+
+
 Running the microservice locally you have to add microservice service user to application-dev.properties, have you run the script with step 4.2 the properties are automatically configured
 
 ```console
