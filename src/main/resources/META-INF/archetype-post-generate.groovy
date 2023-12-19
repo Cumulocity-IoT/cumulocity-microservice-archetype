@@ -15,6 +15,7 @@ println("Microservice name: $microserviceName")
 
 def jsonSlurper = new JsonSlurper()
 
+println("0. Create microservice application on Cumulocity Tenant: $devC8yBaseURL")
 // Step 1.1: Create application on Cumulocity Tenant
 def post1 = new URL("$devC8yBaseURL/application/applications").openConnection();
 def message1 = """{
@@ -45,13 +46,28 @@ post1.setRequestMethod("POST")
 post1.setDoOutput(true)
 post1.setRequestProperty("Content-Type", "application/json")
 post1.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
-post1.getOutputStream().write(message1.getBytes("UTF-8"));
-def postRC1 = post1.getResponseCode();
+try {
+  post1.getOutputStream().write(message1.getBytes("UTF-8"));
+  def postRC1 = post1.getResponseCode();
+} catch (Exception e) {
+  println("An error occurred while sending the HTTP request: " + e.getMessage());
+}
 if(!postRC1.equals(201)) {
-  println(postRC1);
+  println(String.format("Response code: %d", postRC1))
+  println(String.format("Response message: %s", post1.getErrorStream().getText()))
   if(postRC1.equals(422)) {
-    println("please check your application name, maybe the name is to long");
+    println("Please check your application name, maybe the name is to long")
   }
+  if(postRC1.equals(401)) {
+    println("Please check your Cumulocity credentials")
+  }
+  if(postRC1.equals(404)) {
+    println("Please check your Cumulocity URL")
+  }
+  if(postRC1.equals(409)) {
+    println("Please check if the application already exists")
+  }
+  println("ERROR: Application at Cumulocity could not be created!")
   return
 }
 
