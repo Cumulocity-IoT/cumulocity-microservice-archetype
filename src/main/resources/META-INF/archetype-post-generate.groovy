@@ -46,38 +46,52 @@ post1.setRequestMethod("POST")
 post1.setDoOutput(true)
 post1.setRequestProperty("Content-Type", "application/json")
 post1.setRequestProperty("Authorization", devC8yUserCredentialsBASE64)
+
+def postRC1
+def responseBody1
+
 try {
   post1.getOutputStream().write(message1.getBytes("UTF-8"));
-  def postRC1 = post1.getResponseCode();
+  postRC1 = post1.getResponseCode();
+  responseBody1 = post1.getInputStream().getText()
 } catch (Exception e) {
   println("An error occurred while sending the HTTP request: " + e.getMessage());
-}
-if(!postRC1.equals(201)) {
-  println(String.format("Response code: %d", postRC1))
-  println(String.format("Response message: %s", post1.getErrorStream().getText()))
-  if(postRC1.equals(422)) {
-    println("Please check your application name, maybe the name is to long")
-  }
-  if(postRC1.equals(401)) {
-    println("Please check your Cumulocity credentials")
-  }
-  if(postRC1.equals(404)) {
-    println("Please check your Cumulocity URL")
-  }
-  if(postRC1.equals(409)) {
-    println("Please check if the application already exists")
-  }
   println("ERROR: Application at Cumulocity could not be created!")
+  return
+} finally {
+  if(!postRC1.equals(201)) {
+    println(String.format("Response code: %d", postRC1))
+    println(String.format("Response message: %s", post1.getErrorStream().getText()))
+    if(postRC1.equals(422)) {
+      println("Please check your application name, maybe the name is to long")
+    }
+    if(postRC1.equals(401)) {
+      println("Please check your Cumulocity credentials")
+    }
+    if(postRC1.equals(404)) {
+      println("Please check your Cumulocity URL")
+    }
+    if(postRC1.equals(409)) {
+      println("Please check if the application already exists")
+    }
+    println("ERROR: Application at Cumulocity could not be created!")
+    return
+  }
+}
+
+def msInternalId
+def msTenantId
+
+try {
+  def object1 = jsonSlurper.parseText(responseBody1)
+  msInternalId = object1.id
+  msTenantId = object1.owner.tenant.id
+}catch (Exception e) {
+  println("An error occurred while parsing the HTTP response: " + e.getMessage());
   return
 }
 
-
-def responseBody1 = post1.getInputStream().getText()
-def object1 = jsonSlurper.parseText(responseBody1)
-def msInternalId = object1.id
-def msTenantId = object1.owner.tenant.id
 println("1. Application on Cumulocity Tenant: $msTenantId created with internal ID $msInternalId")
-
 
 // Step 1.2: Subscribe to application for tenant
 def post2 = new URL("$devC8yBaseURL/tenant/tenants/$msTenantId/applications").openConnection();
