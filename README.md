@@ -78,6 +78,12 @@ Generate C8y miroservice project using interactive mode
 mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype
 ```
 
+**Note:** In case you use [go-c8y-cli](https://goc8ycli.netlify.app/) you can use directly following environment variables `C8Y_BASEURL` and `C8Y_HEADER_AUTHORIZATION` in the command:
+
+```console
+mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype -DdevC8yBaseURL=%C8Y_BASEURL% -DdevC8yUserCredentialsBASE64=%C8Y_HEADER_AUTHORIZATION%
+```
+
 ### Step 1: Define your microservice name
 
 ```console
@@ -147,7 +153,7 @@ package: cumulocity.microservice.hello_devices
  Y: : Y
 ```
 
-Now you have created your microservice project successfully! However, you could configure even more and run the post-generation script. To do so, you have to initialize devC8yBaseURL and devC8yUserCredentialsBASE64.
+Now you have created your microservice project successfully! However, you could configure even more and run the post-generation script. To do so, you have to initialize devC8yBaseURL and devC8yUserCredentialsBASE64. If you have already have set this for example via go-c8y-cli, you already done and have a registered microservice on your tenant!
 
 _IMPORTANT!!!_
 
@@ -221,6 +227,7 @@ For building docker container please change property in pom file to:
 ```console
 <c8y.docker.skip>false</c8y.docker.skip>
 ```
+
 ## Live Demo
 
 https://youtu.be/2j21ULZbtlg
