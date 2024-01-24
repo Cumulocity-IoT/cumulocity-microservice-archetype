@@ -6,7 +6,7 @@
 	},
 	"isolation": "MULTI_TENANT",
 	"resources": {
-        "cpu": "1",
+        "cpu": "0.5",
         "memory": "512M"
     },
 	"requiredRoles": [
@@ -29,7 +29,7 @@
 			"path": "/health",
 			"port": 80
 		},
-		"initialDelaySeconds": 30,
+		"initialDelaySeconds": 20,
 		"periodSeconds": 10
 	}
 }
