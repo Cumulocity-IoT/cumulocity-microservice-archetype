@@ -153,7 +153,7 @@ package: cumulocity.microservice.hello_devices
  Y: : Y
 ```
 
-Now you have created your microservice project successfully! However, you could configure even more and run the post-generation script. To do so, you have to initialize devC8yBaseURL and devC8yUserCredentialsBASE64. If you have already have set this for example via go-c8y-cli, you already done and have a registered microservice on your tenant!
+Now you have created your microservice project successfully! In case your devC8yBaseURL and devC8yUserCredentialsBASE64 variable wasn't set, you can continue with Step 4.2, in order to initialze them via interactive mode and run the post-generation script. However running this script is optional!
 
 _IMPORTANT!!!_
 
