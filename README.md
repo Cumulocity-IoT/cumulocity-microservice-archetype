@@ -57,7 +57,13 @@ The post-generation script does following steps:
 Cloning this repository into you local GIT repository
 
 ```console
-git clone ...
+git clone https://github.com/SoftwareAG/cumulocity-microservice-archetype.git
+```
+
+Go to project
+
+```console
+cd cumulocity-microservice-archetype
 ```
 
 Install archetype localy in your local maven repository
