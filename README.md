@@ -46,9 +46,9 @@ The post-generation script does following steps:
 
 ## Prerequisites
 
-- Java installed >= 11
+- Java installed >= 17
 - Maven installed >= 3.6
-- Cumulocity IoT Tenant >= 1010.0.0
+- Cumulocity IoT Tenant >= 2025.1.0
 - Cumulocity IoT User Credentials (Base64 encoded)
 
 
@@ -109,7 +109,7 @@ If your microservice name has more than one words, seperate the words by '-'
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 1013.0.0
+[INFO] Using property: c8yVersion = 2025.81.0
 [INFO] Using property: devC8yBaseURL = null
 [INFO] Using property: devC8yUserCredentialsBASE64 = null
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
@@ -125,7 +125,7 @@ You can now just hit enter to continue with default or enter your own artificat 
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 1013.0.0
+[INFO] Using property: c8yVersion = 2025.81.0
 [INFO] Using property: devC8yBaseURL = null
 [INFO] Using property: devC8yUserCredentialsBASE64 = null
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
@@ -142,7 +142,7 @@ You can now just hit enter to continue with default or enter your own artificat 
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 1013.0.0
+[INFO] Using property: c8yVersion = 2025.81.0
 [INFO] Using property: devC8yBaseURL = null
 [INFO] Using property: devC8yUserCredentialsBASE64 = null
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
@@ -151,7 +151,7 @@ Confirm properties configuration:
 microserviceName: hello-devices
 groupId: cumulocity.microservice
 version: 1.0.0-SNAPSHOT
-c8yVersion: 1013.0.0
+c8yVersion: 2025.81.0
 devC8yBaseURL: null
 devC8yUserCredentialsBASE64: null
 artifactId: cumulocity-microservice-hello-devices
@@ -178,7 +178,7 @@ And repeate step 1 - 3 and insert devC8yBaseURL and devC8yUserCredentialsBASE64
 Define value for property 'microserviceName': hello-devices
 Define value for property 'groupId' cumulocity.microservice: :
 Define value for property 'version' 1.0.0-SNAPSHOT: :
-Define value for property 'c8yVersion' 1013.0.0: :
+Define value for property 'c8yVersion' 2025.81.0: :
 Define value for property 'devC8yBaseURL': https://ms-template.eu-latest.cumulocity.com
 Define value for property 'devC8yUserCredentialsBASE64': Basic XXXXX
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
@@ -187,7 +187,7 @@ Confirm properties configuration:
 microserviceName: hello-devices
 groupId: cumulocity.microservice
 version: 1.0.0-SNAPSHOT
-c8yVersion: 1013.0.0
+c8yVersion: 2025.81.0
 devC8yBaseURL: https://ms-template.eu-latest.cumulocity.com
 devC8yUserCredentialsBASE64: Basic XXXXX
 artifactId: cumulocity-microservice-hello-devices
