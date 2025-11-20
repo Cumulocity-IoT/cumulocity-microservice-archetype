@@ -49,7 +49,7 @@ The post-generation script does following steps:
 - Java installed >= 17
 - Maven installed >= 3.6
 - Cumulocity IoT Tenant >= 2025.1.0
-- Cumulocity IoT User Credentials (Base64 encoded)
+- [go-c8y-cli](https://goc8ycli.netlify.app/) installed and configured
 
 
 ## Run
@@ -80,15 +80,14 @@ cd ..
 
 Generate C8y miroservice project using interactive mode
 
-```console
-mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=cumulocity.microservice" "-DarchetypeArtifactId=cumulocity-microservice-archetype" "-DinteractiveMode=true"
 ```
 
-**Note:** In case you use [go-c8y-cli](https://goc8ycli.netlify.app/) you can use directly following environment variables `C8Y_BASEURL` and `C8Y_HEADER_AUTHORIZATION` in the command:
-
-```console
-mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype -DdevC8yBaseURL=%C8Y_BASEURL% -DdevC8yUserCredentialsBASE64=%C8Y_HEADER_AUTHORIZATION%
+```shell
+mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype -DinteractiveMode=true
 ```
+
 
 ### Step 1: Define your microservice name
 
@@ -134,7 +133,7 @@ Define value for property 'package' cumulocity.microservice.hello-devices: : cum
 
 You can now just hit enter to continue with default or enter your own artificat id. **!!! Beaware that '-' can't be used at java packages. In that case you must replace '-' with '_'. !!!**
 
-### Step 4.1: Confirm your configuration with 'Y' without running post-generation script
+### Step 4: Confirm your configuration with 'Y'
 
 ```console
 [INFO] Generating project in Interactive mode
@@ -159,7 +158,7 @@ package: cumulocity.microservice.hello_devices
  Y: : Y
 ```
 
-Now you have created your microservice project successfully! In case your devC8yBaseURL and devC8yUserCredentialsBASE64 variable wasn't set, you can continue with Step 4.2, in order to initialze them via interactive mode and run the post-generation script. However running this script is optional!
+Now you have created your microservice project successfully!
 
 _IMPORTANT!!!_
 
@@ -167,32 +166,6 @@ If you haven't setup your application-dev.properties to a specific tenant, the p
 
 ```
 mvn clean install -Dmaven.test.skip=true
-```
-
-### Step 4.2: Confirm your configuration with 'N' with running post-generation script
-
-And repeate step 1 - 3 and insert devC8yBaseURL and devC8yUserCredentialsBASE64
-
-```console
- Y: : N
-Define value for property 'microserviceName': hello-devices
-Define value for property 'groupId' cumulocity.microservice: :
-Define value for property 'version' 1.0.0-SNAPSHOT: :
-Define value for property 'c8yVersion' 2025.81.0: :
-Define value for property 'devC8yBaseURL': https://ms-template.eu-latest.cumulocity.com
-Define value for property 'devC8yUserCredentialsBASE64': Basic XXXXX
-Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
-Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
-Confirm properties configuration:
-microserviceName: hello-devices
-groupId: cumulocity.microservice
-version: 1.0.0-SNAPSHOT
-c8yVersion: 2025.81.0
-devC8yBaseURL: https://ms-template.eu-latest.cumulocity.com
-devC8yUserCredentialsBASE64: Basic XXXXX
-artifactId: cumulocity-microservice-hello-devices
-package: cumulocity.microservice.hello_devices
- Y: : Y
 ```
 
 ### Step 5: Build your fresh generated project
@@ -209,14 +182,22 @@ and build the project:
 mvn install
 ```
 
-Running the microservice locally you have to add microservice service user to application-dev.properties, have you run the script with step 4.2 the properties are automatically configured
+### Step 6: Register the microservice to your development tenant
 
-```console
-C8Y.bootstrap.tenant=<tenant ID>
-C8Y.baseURL=<URL>
-C8Y.bootstrap.user=<service-user>
-C8Y.bootstrap.password=<service-user-password>
+Create the microservice on your tenant and retrieve the bootstrap credentials by running the post-generation script.
+
+```powershell
+.\register_vscode.ps1
 ```
+
+```shell
+./register_vscode.sh
+```
+
+_IMPORTANT!!!_
+
+If you use other IDE's like IntelliJ or others, you have to set the environment variables manually. We also look for contributions to support other IDE's with post-generation scripts.
+
 
 ### Step 6: Start the microservice and test
 
