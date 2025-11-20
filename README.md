@@ -168,7 +168,7 @@ If you haven't setup your application-dev.properties to a specific tenant, the p
 mvn clean install -Dmaven.test.skip=true
 ```
 
-### Step 5: Build your fresh generated project
+### Step 5: Open your fresh generated project
 
 Go to the project folder
 
@@ -176,11 +176,6 @@ Go to the project folder
 cd cumulocity-microservice-hello-devices/
 ```
 
-and build the project:
-
-```console
-mvn install
-```
 
 ### Step 6: Register the microservice to your development tenant
 
