@@ -8,14 +8,7 @@
             "mainClass": "${package}.App",
             "projectName": "${artifactId}",
             "args": "",
-            "envFile": "${workspaceFolder}/.env",
-            "env": {
-                    "C8Y_BOOTSTRAP_TENANT": "",        
-                    "C8Y_BASEURL": "",
-                    "C8Y_BOOTSTRAP_USER": "",
-                    "C8Y_BOOTSTRAP_PASSWORD": "",
-                    "C8Y_MICROSERVICE_ISOLATION": "MULTI_TENANT"
-            },
+            "envFile": "${workspaceFolder}/.env/dev.env",
             "vmArgs": "-Dlogging.config=src/main/configuration/${artifactId}-logging.xml"
         }
     ]

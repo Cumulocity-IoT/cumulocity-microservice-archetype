@@ -69,6 +69,8 @@ under the License.
       <directory/>
       <includes>
         <include>*.ps1</include>
+        <include>*.sh</include>
+        <include>.gitignore</include>
       </includes>
     </fileSet>
   </fileSets>
