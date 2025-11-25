@@ -162,7 +162,7 @@ Now you have created your microservice project successfully!
 
 _IMPORTANT!!!_
 
-If you haven't setup your application-dev.properties to a specific tenant, the predefined unit test will not succeed! This unit test is starting the spring boot application and checks if the application is successfully starting. The microservice can't start if the c8y configuration isn't setup. However you can build with skipping the test by:
+If you haven't setup your environment variables to a specific tenant, the predefined unit test will not succeed! This unit test is starting the spring boot application and checks if the application is successfully starting. The microservice can't start if the c8y configuration isn't setup. However you can build with skipping the test by:
 
 ```
 mvn clean install -Dmaven.test.skip=true
@@ -177,24 +177,27 @@ cd cumulocity-microservice-hello-devices/
 ```
 
 
-### Step 6: Register the microservice to your development tenant
+### Step 6: Initialize your microservice to your development tenant (create, subscribe and retrieve bootstrap credentials)
 
-Create the microservice on your tenant and retrieve the bootstrap credentials by running the post-generation script.
+Create the microservice on your tenant and retrieve the bootstrap credentials by running the initializr script. The script uses the go-c8y-cli, so make sure you have it installed and configured session to your development tenant.
 
-```powershell
-.\register_vscode.ps1
+If you use VSCode on Windows run:
+
+```terminal
+.\vscode_initializer.ps1
 ```
 
+on Linux or Mac run:
+
 ```shell
-./register_vscode.sh
+./vscode_initializer.sh
 ```
 
 _IMPORTANT!!!_
 
-If you use other IDE's like IntelliJ or others, you have to set the environment variables manually. We also look for contributions to support other IDE's with post-generation scripts.
+The initializer script is optional. You can also manually create the microservice on your tenant and insert the credentials in your environment variables. However the script makes it much more comfortable.
 
-
-### Step 6: Start the microservice and test
+### Step 7: Start the microservice and test
 
 Go to target and run the spring boot appliation
 
