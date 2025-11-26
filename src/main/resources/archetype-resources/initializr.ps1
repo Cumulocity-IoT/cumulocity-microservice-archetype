@@ -1,10 +1,10 @@
 $launchFile = ".vscode\launch.json"
 
-Write-Host "Creating microservice 'test12' and retrieving bootstrap credentials..."
+Write-Host "Creating microservice '${microserviceName}' and retrieving bootstrap credentials..."
 
 set-session
 
-$cmdOutput = c8y microservices create --name test12 --file ./src/main/configuration/cumulocity.json `
+$cmdOutput = c8y microservices create --name ${microserviceName} --file ./src/main/configuration/cumulocity.json `
     | c8y microservices getBootstrapUser --outputTemplate "{C8Y_BASEURL: 'NA', C8Y_BOOTSTRAP_TENANT: output.tenant, C8Y_BOOTSTRAP_USER: output.name, C8Y_BOOTSTRAP_PASSWORD: output.password, C8Y_MICROSERVICE_ISOLATION: 'MULTI_TENANT'}"
 
 if (-not $cmdOutput) { throw "No output received from c8y command." }

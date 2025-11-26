@@ -1,12 +1,20 @@
 ## cumulocity-microservice-archetype
 
-Maven archetype to generate cumulocity microservice project. Based on https://github.com/SoftwareAG/cumulocity-clients-java and https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
+Maven archetype to generate cumulocity microservice project. Based on https://github.com/Cumulocity-IoT/cumulocity-clients-java and https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
 
 The project will contain following project structure:
 
 ```console
 project
 |-- pom.xml
+|-- .gitignore
+|-- README.md
+|-- initializer.ps1
+|-- initializer.sh
+|-- .vscode
+|    `-- launch.json
+|-- .idea
+|    `-- Spring_Boot-App.xml
 `-- src
     |-- main
     |  | -- java
@@ -29,20 +37,14 @@ The project contains also an example REST controller which must be replaced or r
 However the complete project is directly runnable without any additional changes. It uses also some best practices like:
 
 - using spring profiles (dev, test and prod)
-- using local configured application-dev.properties to run localy on development env
+- using specific launch configurations for VSCode and IntelliJ IDEA and externalized cumulocity bootstrap configuration
+- using local configured application-dev.properties to run localy on development env, see also initializer script
+- using best practices for gitignore and README.md
 - using Logback configuration file
 - using current java cumulocity microservice SDK + configuration via cumulocity.json
 - using custom banner with cumulocity SDK version
 - using JUnit 5 and SpringBootTest to check if context load is successful
 
-In order to make it even faster to setup your project, the archetype contains a post-generation script which registers your microservice automatically on your tenant. This step is optional.
-
-The post-generation script does following steps: 
-
-- Generate microservice application on tenant
-- Subscribes microservice to tenant
-- Acquires microservice credentials
-- writes all information to application-dev.properties
 
 ## Prerequisites
 
@@ -181,16 +183,16 @@ cd cumulocity-microservice-hello-devices/
 
 Create the microservice on your tenant and retrieve the bootstrap credentials by running the initializr script. The script uses the go-c8y-cli, so make sure you have it installed and configured session to your development tenant.
 
-If you use VSCode on Windows run:
+If you use Windows run:
 
 ```terminal
-.\vscode_initializer.ps1
+.\initializer.ps1
 ```
 
 on Linux or Mac run:
 
 ```shell
-./vscode_initializer.sh
+./initializer.sh
 ```
 
 _IMPORTANT!!!_

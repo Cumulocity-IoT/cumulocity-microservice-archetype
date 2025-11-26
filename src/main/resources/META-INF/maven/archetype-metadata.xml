@@ -66,11 +66,15 @@ under the License.
       <directory>.vscode</directory>
     </fileSet>
     <fileSet filtered="true" packaged="false">
+      <directory>.idea</directory>
+    </fileSet>
+    <fileSet filtered="true" packaged="false">
       <directory/>
       <includes>
         <include>*.ps1</include>
         <include>*.sh</include>
-        <include>.gitignore</include>
+        <include>gitignore</include>
+        <include>README.md</include>
       </includes>
     </fileSet>
   </fileSets>

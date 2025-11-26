@@ -1,0 +1,23 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration name="Spring Boot-App${artifactId}" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="${artifactId}" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="${package}.App" />
+    <option name="VM_PARAMETERS" value="-Dlogging.config=src/main/configuration/${artifactId}-logging.xml" />
+    <shortenClasspath name="MANIFEST" />
+    <!-- If you use the EnvFile IntelliJ plugin, it will pick up these settings below -->
+    <envFileSettings>
+      <enabled>true</enabled>
+      <files>
+        <file path="$PROJECT_DIR$/.env/dev.env" />
+      </files>
+      <expandMacros>true</expandMacros>
+      <enableSubstitution>true</enableSubstitution>
+    </envFileSettings>
+    <!-- Without the EnvFile plugin, IntelliJ does not auto-load .env files.
+         You can manually add key/value pairs after project generation. -->
+    <envs />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
