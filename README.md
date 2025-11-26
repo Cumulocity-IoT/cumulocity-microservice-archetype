@@ -82,14 +82,17 @@ cd ..
 
 Generate C8y miroservice project using interactive mode
 
-```powershell
-mvn archetype:generate "-DarchetypeGroupId=cumulocity.microservice" "-DarchetypeArtifactId=cumulocity-microservice-archetype" "-DinteractiveMode=true"
-```
-
-```shell
+Most Terminals:
+```terminal
 mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype -DinteractiveMode=true
 ```
 
+Powershell:
+```terminal
+mvn archetype:generate "-DarchetypeGroupId=cumulocity.microservice" "-DarchetypeArtifactId=cumulocity-microservice-archetype" "-DinteractiveMode=true"
+```
+
+![Archetype Generation](doc/archetypeTerminal.gif)
 
 ### Step 1: Define your microservice name
 
@@ -162,13 +165,6 @@ package: cumulocity.microservice.hello_devices
 
 Now you have created your microservice project successfully!
 
-_IMPORTANT!!!_
-
-If you haven't setup your environment variables to a specific tenant, the predefined unit test will not succeed! This unit test is starting the spring boot application and checks if the application is successfully starting. The microservice can't start if the c8y configuration isn't setup. However you can build with skipping the test by:
-
-```
-mvn clean install -Dmaven.test.skip=true
-```
 
 ### Step 5: Open your fresh generated project
 
