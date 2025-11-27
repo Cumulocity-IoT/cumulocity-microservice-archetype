@@ -191,8 +191,6 @@ on Linux or Mac run:
 ./initializer.sh
 ```
 
-<video src="doc/initializr.mp4" controls></video>
-
 _IMPORTANT!!!_
 
 The initializer script is optional. You can also manually create the microservice on your tenant and insert the credentials in your environment variables. However the script makes it much more comfortable.
