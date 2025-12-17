@@ -1,0 +1,6 @@
+<fileSet encoding="UTF-8">
+  <directory>.run</directory>
+  <includes>
+    <include>*.xml</include>
+  </includes>
+</fileSet>
