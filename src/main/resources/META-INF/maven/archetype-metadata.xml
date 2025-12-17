@@ -70,5 +70,12 @@ under the License.
       <directory>src/test/java</directory>
     </fileSet>
 
+  <fileSet encoding="UTF-8">
+  <directory>.run</directory>
+  <includes>
+    <include>*.xml</include>
+  </includes>
+  </fileSet>
+
   </fileSets>
 </archetype-descriptor>
