@@ -1,0 +1,29 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false"
+                   name="Debug Microservice"
+                   type="SpringBootApplication"
+                   factoryName="Spring Boot">
+
+        <module name="$artifactId$" />
+
+        <!-- Main class from pom.xml -->
+        <option name="SPRING_BOOT_MAIN_CLASS"
+                value="$package$.App" />
+
+        <option name="WORKING_DIRECTORY"
+                value="$PROJECT_DIR$" />
+
+        <!-- Java 11 -->
+        <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+        <option name="ALTERNATIVE_JRE_PATH" value="11" />
+
+        <!-- Enable debugging -->
+        <option name="ENABLE_DEBUG" value="true" />
+
+        <envs>
+            <env name="SPRING_PROFILES_ACTIVE" value="dev" />
+        </envs>
+
+        <method />
+    </configuration>
+</component>
