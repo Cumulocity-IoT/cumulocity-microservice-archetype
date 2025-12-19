@@ -34,13 +34,12 @@ project
     |        `-- logging.xml
 ```
 
-The project contains also two initializr scripts one for windows and one for linux/macOS. This script fetches the bootstrap credentials and prepares environment variables for local development in `.env/dev.env`. It also contains example code like a REST controller which must be replaced or removed depending on your further development.
+The project contains also two initializr scripts one for windows and one for linux/macOS. This script fetches the cumulocity microservice bootstrap credentials and stores the environment variables for local development in `.env/dev.env`. It also contains example code like a REST controller which must be replaced or removed depending on your further development.
 
-However the complete project is directly runnable and prepared for VSCode and IntelliJ IDEA without any additional changes. It uses also some best practices like:
+However the generated project is directly runnable and prepared for VSCode and IntelliJ IDEA without any additional changes. It includes also some best practices like:
 
 - using spring profiles (dev, test and prod)
 - using specific launch configurations for VSCode and IntelliJ IDEA and externalized cumulocity bootstrap configuration
-- using local configured application-dev.properties to run localy on development env, see also initializer script
 - using best practices for gitignore and README.md
 - using Logback configuration file
 - using current java cumulocity microservice SDK + configuration via cumulocity.json
