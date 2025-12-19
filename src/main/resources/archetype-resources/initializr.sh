@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -i
+#!/usr/bin/env bash
 # Generates a .env/dev.env with Cumulocity bootstrap credentials
 # Note: This file is filtered by the Maven archetype. Only ${microserviceName} is intentional.
 
