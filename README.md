@@ -9,12 +9,13 @@ project
 |-- pom.xml
 |-- .gitignore
 |-- README.md
-|-- initializer.ps1
-|-- initializer.sh
+|-- initializr.ps1
+|-- initializr.sh
 |-- .vscode
 |    `-- launch.json
 |-- .idea
-|    `-- Spring_Boot-App.xml
+|    `-- runConfigurations
+|        `-- Spring_Boot-App.xml
 `-- src
     |-- main
     |  | -- java
@@ -33,8 +34,9 @@ project
     |        `-- logging.xml
 ```
 
-The project contains also an example REST controller which must be replaced or removed depending on your further development.
-However the complete project is directly runnable without any additional changes. It uses also some best practices like:
+The project contains also two initializr scripts one for windows and one for linux/macOS. This script fetches the bootstrap credentials and prepares environment variables for local development in `.env/dev.env`. It also contains example code like a REST controller which must be replaced or removed depending on your further development.
+
+However the complete project is directly runnable and prepared for VSCode and IntelliJ IDEA without any additional changes. It uses also some best practices like:
 
 - using spring profiles (dev, test and prod)
 - using specific launch configurations for VSCode and IntelliJ IDEA and externalized cumulocity bootstrap configuration
