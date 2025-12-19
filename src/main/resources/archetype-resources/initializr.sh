@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -i
 # Generates a .env/dev.env with Cumulocity bootstrap credentials
 # Note: This file is filtered by the Maven archetype. Only ${microserviceName} is intentional.
 
@@ -17,8 +17,8 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 if [ -z "$C8Y_BASEURL" ]; then
-  echo "ERROR: C8Y_BASEURL env var not set (e.g. export C8Y_BASEURL=https://tenant.example.com)." >&2
-  exit 1
+  echo "No existing session found, starting new session..."
+  eval "$(c8y sessions set)"
 fi
 
 echo "Creating microservice '$MICRO_NAME' and retrieving bootstrap credentials..."
@@ -52,4 +52,4 @@ env_file="$env_dir/dev.env"
 printf '%s\n' "$json" | jq -r 'to_entries | .[] | "\(.key)=\(.value)"' > "$env_file"
 
 echo "Wrote environment variables to $env_file"
-echo "Tip: reference this with VS Code launch.json using \"envFile\": \".env/dev.env\""
+echo "Start your IDE! Run configurations already prepared for IntelliJ and VSCode."
