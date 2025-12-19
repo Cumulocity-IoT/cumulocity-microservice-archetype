@@ -178,7 +178,7 @@ cd cumulocity-microservice-hello-devices/
 
 ### Step 6: Initialize your microservice to your development tenant (create, subscribe and retrieve bootstrap credentials)
 
-Create the microservice on your tenant and retrieve the bootstrap credentials by running the initializr script. The script uses the go-c8y-cli, so make sure you have it installed and configured session to your development tenant.
+Create the microservice on your tenant and retrieve the bootstrap credentials by running the initializr script. The script uses the go-c8y-cli, so make sure you have it installed and configured session to your development tenant. The script stores the environment variables in `.env/dev.env` for local development.
 
 If you use Windows run:
 
@@ -212,23 +212,20 @@ For building docker container please change property in pom file to:
 <c8y.docker.skip>false</c8y.docker.skip>
 ```
 
-## Live Demo
-
-https://youtu.be/2j21ULZbtlg
-
 ## Authors 
 
-[Alexander Pester](mailto:alexander.pester@softwareag.com)
+[Alexander Pester](mailto:alexander.pester@cumulocity.com)
 
-## Disclaimer
+# Useful links 
 
-These tools are provided as-is and without warranty or support. They do not constitute part of the Software AG product suite. Users are free to use, fork and modify them, subject to the license agreement. While Software AG welcomes contributions, we cannot guarantee to include every contribution in the master project.
+📘 Explore the Knowledge Base   
+Dive into a wealth of Cumulocity IoT tutorials and articles in our [Tech Community](https://techcommunity.cumulocity.com).  
 
-## Contact
+💡 Get Expert Answers    
+Stuck or just curious? Ask the Cumulocity IoT experts directly on our [Forum](https://techcommunity.cumulocity.com/c/forum/5).   
 
-For more information you can Ask a Question in the [TECHcommunity Forums](http://tech.forums.softwareag.com/techjforum/forums/list.page?product=cumulocity).
+🚀 Try Cumulocity IoT    
+See Cumulocity IoT in action with a [Free Trial](https://www.cumulocity.com/start-your-journey/free-trial).   
 
-You can find additional information in the [Software AG TECHcommunity](https://tech.forums.softwareag.com/tag/Cumulocity-IoT).
-
-_________________
-Contact us at [TECHcommunity](mailto:technologycommunity@softwareag.com?subject=Github/SoftwareAG) if you have any questions.
+✍️ Share Your Feedback    
+Your input drives our innovation. If you find a bug, please create an issue in the repository. If you'd like to share your ideas or feedback, please post them [here](https://techcommunity.cumulocity.com/c/feedback-ideas/14). 
