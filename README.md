@@ -178,8 +178,6 @@ cd cumulocity-microservice-hello-devices/
 
 ### Step 6: Initialize your microservice to your development tenant (create, subscribe and retrieve bootstrap credentials)
 
-![Archetype Generation](doc/initialzr.gif)
-
 Create the microservice on your tenant and retrieve the bootstrap credentials by running the initializr script. The script uses the go-c8y-cli, so make sure you have it installed and configured session to your development tenant. The script stores the environment variables in `.env/dev.env` for local development.
 
 If you use Windows run:
@@ -193,6 +191,8 @@ on Linux or Mac run:
 ```shell
 ./initializer.sh
 ```
+
+![Archetype Generation](doc/initialzr.gif)
 
 _IMPORTANT!!!_
 
