@@ -202,7 +202,7 @@ Go to target and run the spring boot appliation
 
 java -jar cumulocity-microservice-hello-devices-1.0.0-SNAPSHOT.jar
 
-Open the browser and open link http://localhost:8080/api/hello/devices, you have to insert your Cumulocity credentials, keep in mind to set the tenant Id in front of your user name like t2134/alexander.pester@softwareag.com.
+Open the browser and open link http://localhost:8080/api/hello/devices, you have to insert your Cumulocity credentials, keep in mind to set the tenant Id in front of your user name like t2134/alexander.pester@cumulocity.com.
 
 Now your microservice is ready to evolve!!!
 
