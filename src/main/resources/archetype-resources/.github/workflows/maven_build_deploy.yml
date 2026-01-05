@@ -46,8 +46,8 @@ jobs:
       #Packaging Standard backend
     - name: Packaging Small (S) Version
       run: |
-        # Calculate new filename: replace 'service-request-mgmt' with 'service-request-mgmt-s'
-        NEW_FILENAME=$(echo "${{ env.artifact_filename }}" | sed 's/service-request-mgmt/service-request-mgmt-s/')
+        # Calculate new filename: replace '${microserviceName}' with '${microserviceName}-s'
+        NEW_FILENAME=$(echo "${{ env.artifact_filename }}" | sed 's/${microserviceName}/${microserviceName}-s/')
 
         # Extract cumulocity.json from the artifact to a temporary file
         unzip -p ./target/${{ env.artifact_filename }} cumulocity.json > ./target/cumulocity-base.json
@@ -71,8 +71,8 @@ jobs:
         retention-days: 7
     - name: Packaging Medium (M) Version
       run: |
-        # Calculate new filename: replace 'service-request-mgmt' with 'service-request-mgmt-m'
-        NEW_FILENAME=$(echo "${{ env.artifact_filename }}" | sed 's/service-request-mgmt/service-request-mgmt-m/')
+        # Calculate new filename: replace '${microserviceName}' with '${microserviceName}-m'
+        NEW_FILENAME=$(echo "${{ env.artifact_filename }}" | sed 's/${microserviceName}/${microserviceName}-m/')
 
         # Extract cumulocity.json from the artifact to a temporary file
         unzip -p ./target/${{ env.artifact_filename }} cumulocity.json > ./target/cumulocity-base.json
@@ -97,4 +97,4 @@ jobs:
     - name: Deploy to test environment
       uses: reubenmiller/setup-go-c8y-cli@main
     - run: |
-        c8y microservices create --file target/${{ env.artifact_filename_s }} --name service-request-mgmt --key service-request-mgmt
+        c8y microservices create --file target/${{ env.artifact_filename_s }} --name ${microserviceName} --key ${microserviceName}

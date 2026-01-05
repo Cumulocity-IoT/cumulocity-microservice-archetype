@@ -1,0 +1,6 @@
+{
+	"resources": {
+        "cpu": "0.25",
+        "memory": "512M"
+    }
+}
