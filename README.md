@@ -19,9 +19,9 @@ project
 |-- .github
     |-- agents
     |    `-- ps-java-microservice.agent.md
-|    `-- workflows
+     `-- workflows
         |-- maven_build.yml
-|        `-- maven_build_deploy.yml
+         `-- maven_build_deploy.yml
 `-- src
     |-- main
     |  | -- java
@@ -198,11 +198,11 @@ on Linux or Mac run:
 
 _IMPORTANT!!!_
 
-The initializer script is optional. You can also manually create the microservice on your tenant and insert the credentials in your environment variables. However the script makes it much more comfortable.
+The initializer script is optional. You can also manually create the microservice on your tenant and insert the credentials in your environment variables. However the script makes it much more comfortable. It also can be re-run if you need to re-create the microservice or retrieve the bootstrap credentials again or on another tenant.
 
 ### Step 7: Run the microservice
 
-After initializing your project you should see the run configurations in your IDE. 
+You should see the run configurations in your IDE, after initializing your project.
 
 In **VSCode** you can find the run configuration in `.vscode/launch.json`. You can start the microservice by pressing `F5` or selecting `Run and Debug` from the sidebar and clicking on `Start Debugging`.
 
