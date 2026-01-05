@@ -69,6 +69,9 @@ under the License.
       <directory>.idea</directory>
     </fileSet>
     <fileSet filtered="true" packaged="false">
+      <directory>.github</directory>
+    </fileSet>
+    <fileSet filtered="true" packaged="false">
       <directory/>
       <includes>
         <include>*.ps1</include>

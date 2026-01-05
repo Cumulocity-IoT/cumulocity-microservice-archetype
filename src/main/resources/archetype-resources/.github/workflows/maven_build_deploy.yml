@@ -1,0 +1,100 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven and uploading artifact
+
+on:
+  push:
+    branches: [ "develop", "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      C8Y_HOST: '${{ secrets.C8Y_HOST }}'
+      C8Y_USER: '${{ secrets.C8Y_USER }}'
+      C8Y_PASSWORD: '${{ secrets.C8Y_PASSWORD }}'
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Set artifact filename
+      run: |
+        cd target
+        echo "artifact_filename=$(ls | grep .zip)" >> $GITHUB_ENV
+    - name: Upload artifact standard version
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.artifact_filename }}
+        path: target/${{ env.artifact_filename }}
+        retention-days: 7
+      #Packaging Standard backend
+    - name: Packaging Small (S) Version
+      run: |
+        # Calculate new filename: replace 'service-request-mgmt' with 'service-request-mgmt-s'
+        NEW_FILENAME=$(echo "${{ env.artifact_filename }}" | sed 's/service-request-mgmt/service-request-mgmt-s/')
+
+        # Extract cumulocity.json from the artifact to a temporary file
+        unzip -p ./target/${{ env.artifact_filename }} cumulocity.json > ./target/cumulocity-base.json
+
+        # Merge extracted cumulocity.json with cumulocity-S.json
+        jq -s '.[0] * .[1]' ./target/cumulocity-base.json ./src/main/configuration/cumulocity-S.json > ./target/cumulocity.json
+        
+        # Create a copy of the microservice package with the new name
+        cp ./target/${{ env.artifact_filename }} ./target/$NEW_FILENAME
+
+        # Update the cumulocity.json in the copied package
+        zip -j ./target/$NEW_FILENAME ./target/cumulocity.json
+
+        echo "artifact_filename_s=$NEW_FILENAME" >> $GITHUB_ENV
+
+    - name: Upload artifact Small (S) Version
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.artifact_filename_s }}
+        path: target/${{ env.artifact_filename_s }}
+        retention-days: 7
+    - name: Packaging Medium (M) Version
+      run: |
+        # Calculate new filename: replace 'service-request-mgmt' with 'service-request-mgmt-m'
+        NEW_FILENAME=$(echo "${{ env.artifact_filename }}" | sed 's/service-request-mgmt/service-request-mgmt-m/')
+
+        # Extract cumulocity.json from the artifact to a temporary file
+        unzip -p ./target/${{ env.artifact_filename }} cumulocity.json > ./target/cumulocity-base.json
+
+        # Merge extracted cumulocity.json with cumulocity-M.json
+        jq -s '.[0] * .[1]' ./target/cumulocity-base.json ./src/main/configuration/cumulocity-M.json > ./target/cumulocity.json
+        
+        # Create a copy of the microservice package with the new name
+        cp ./target/${{ env.artifact_filename }} ./target/$NEW_FILENAME
+
+        # Update the cumulocity.json in the copied package
+        zip -j ./target/$NEW_FILENAME ./target/cumulocity.json
+
+        echo "artifact_filename_m=$NEW_FILENAME" >> $GITHUB_ENV
+
+    - name: Upload artifact Medium (M) Version
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.artifact_filename_m }}
+        path: target/${{ env.artifact_filename_m }}
+        retention-days: 7
+    - name: Deploy to test environment
+      uses: reubenmiller/setup-go-c8y-cli@main
+    - run: |
+        c8y microservices create --file target/${{ env.artifact_filename_s }} --name service-request-mgmt --key service-request-mgmt

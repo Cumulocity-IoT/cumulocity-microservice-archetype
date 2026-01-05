@@ -16,6 +16,12 @@ project
 |-- .idea
 |    `-- runConfigurations
 |        `-- Spring_Boot-App.xml
+|-- .github
+    |-- agents
+    |    `-- ps-java-microservice.agent.md
+|    `-- workflows
+        |-- maven_build.yml
+|        `-- maven_build_deploy.yml
 `-- src
     |-- main
     |  | -- java
@@ -45,6 +51,8 @@ However the generated project is directly runnable and prepared for VSCode and I
 - using current java cumulocity microservice SDK + configuration via cumulocity.json
 - using custom banner with cumulocity SDK version
 - using JUnit 5 and SpringBootTest to check if context load is successful
+- using GitHub Actions for CI/CD to build and deploy the microservice to cumulocity tenant
+- using Copilot custom agent to support you during development
 
 
 ## Prerequisites
@@ -183,7 +191,7 @@ If you use Windows run:
 on Linux or Mac run:
 
 ```shell
-./initializer.sh
+. ./initializer.sh
 ```
 
 ![Archetype Generation](doc/initialzr.gif)
@@ -192,11 +200,19 @@ _IMPORTANT!!!_
 
 The initializer script is optional. You can also manually create the microservice on your tenant and insert the credentials in your environment variables. However the script makes it much more comfortable.
 
-### Step 7: Start the microservice and test
+### Step 7: Run the microservice
 
-Go to target and run the spring boot appliation
+After initializing your project you should see the run configurations in your IDE. 
 
-java -jar cumulocity-microservice-hello-devices-1.0.0-SNAPSHOT.jar
+In **VSCode** you can find the run configuration in `.vscode/launch.json`. You can start the microservice by pressing `F5` or selecting `Run and Debug` from the sidebar and clicking on `Start Debugging`.
+
+For **IntelliJ** IDEA you can find the run configuration in `.idea/runConfigurations/Spring_Boot-App.xml`. You can start the microservice by opening the `Run` menu and selecting `Run 'Spring_Boot-App'`.
+
+After starting the microservice you should see in the console output something like:
+
+```console
+2024-06-12 10:15:30.123  INFO 12345 --- [           main] c.c.microservice.hello_devices.App         : Started App in 3.456 seconds (JVM running for 4.567)
+```
 
 Open the browser and open link http://localhost:8080/api/hello/devices, you have to insert your Cumulocity credentials, keep in mind to set the tenant Id in front of your user name like t2134/alexander.pester@cumulocity.com.
 
@@ -207,6 +223,8 @@ For building docker container please change property in pom file to:
 ```console
 <c8y.docker.skip>false</c8y.docker.skip>
 ```
+
+The maven build will create a docker image!
 
 ## Authors 
 
