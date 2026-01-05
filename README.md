@@ -115,8 +115,6 @@ Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
 [INFO] Using property: c8yVersion = 2025.81.0
-[INFO] Using property: devC8yBaseURL = null
-[INFO] Using property: devC8yUserCredentialsBASE64 = null
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 ```
 
@@ -131,8 +129,6 @@ Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
 [INFO] Using property: c8yVersion = 2025.81.0
-[INFO] Using property: devC8yBaseURL = null
-[INFO] Using property: devC8yUserCredentialsBASE64 = null
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 ```
@@ -148,8 +144,6 @@ Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
 [INFO] Using property: c8yVersion = 2025.81.0
-[INFO] Using property: devC8yBaseURL = null
-[INFO] Using property: devC8yUserCredentialsBASE64 = null
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 Confirm properties configuration:
