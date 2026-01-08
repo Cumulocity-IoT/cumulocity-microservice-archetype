@@ -141,7 +141,7 @@ Clone and install the archetype in your local Maven repository:
 ```bash
 git clone https://github.com/Cumulocity-IoT/cumulocity-microservice-archetype.git
 cd cumulocity-microservice-archetype
-mvn install
+mvn clean install
 ```
 
 ### Step 2: Generate Your Project
@@ -245,6 +245,20 @@ When prompted for credentials:
 - **Password**: Your Cumulocity password
 
 You should see a JSON array of all devices from your tenant. **Congratulations!** Your microservice is running locally and connected to Cumulocity!
+
+### Step 7: Push to GitHub and Enable CI/CD
+
+1. Initialize a Git repository
+2. Create a remote repository on a platform like GitHub, GitLab, or Bitbucket
+3. Check the prepared `.gitignore` to ensure sensitive files are excluded
+4. Push your code to the remote repository
+5. If you use GitHub, the included GitHub Actions workflows will automatically run on pushes to `main` and `develop` branches, however you need to add following secrets to your repository settings:
+```
+      secrets.C8Y_HOST
+      secrets.C8Y_USER
+      secrets.C8Y_PASSWORD
+```
+
 
 ## Key Differences from the 2022 Version
 
