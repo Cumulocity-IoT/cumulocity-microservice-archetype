@@ -1,0 +1,30 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false"
+                   name="Run Microservice"
+                   type="SpringBootApplication"
+                   factoryName="Spring Boot">
+
+        <!-- Maven module name -->
+        <module name="$artifactId$" />
+
+        <!-- Main class from pom.xml -->
+        <option name="SPRING_BOOT_MAIN_CLASS"
+                value="$package$.App" />
+
+        <!-- Project root -->
+        <option name="WORKING_DIRECTORY"
+                value="$PROJECT_DIR$" />
+
+        <!-- Use Java 11 -->
+        <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+        <option name="ALTERNATIVE_JRE_PATH" value="11" />
+
+        <!-- Environment variables -->
+        <envs>
+            <env name="SPRING_PROFILES_ACTIVE" value="dev" />
+        </envs>
+
+        <!-- Let IntelliJ handle classpath -->
+        <method />
+    </configuration>
+</component>

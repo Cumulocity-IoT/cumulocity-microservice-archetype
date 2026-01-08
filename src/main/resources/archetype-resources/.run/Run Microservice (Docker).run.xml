@@ -1,0 +1,28 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false"
+                   name="Run Microservice (Docker)"
+                   type="DockerRunConfigurationType"
+                   factoryName="Docker Container">
+
+        <option name="imageTag" value="$microserviceName$:latest" />
+        <option name="containerName" value="$microserviceName$" />
+
+        <option name="command" value="" />
+        <option name="tty" value="true" />
+
+        <envs>
+            <env name="SPRING_PROFILES_ACTIVE" value="prod" />
+        </envs>
+
+        <option name="ports">
+            <list>
+                <DockerPortMapping>
+                    <option name="containerPort" value="8080" />
+                    <option name="hostPort" value="8080" />
+                </DockerPortMapping>
+            </list>
+        </option>
+
+        <method />
+    </configuration>
+</component>
