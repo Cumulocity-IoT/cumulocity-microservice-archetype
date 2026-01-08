@@ -20,14 +20,16 @@ hs_err_pid*
 replay_pid*
 
 # IntelliJ IDEA
-.idea/
+.idea/*
+!.idea/runConfigurations/
 *.iml
 *.iws
 *.ipr
 out/
 
 # VSCode
-.vscode/
+.vscode/*
+!.vscode/launch.json
 .settings/
 .classpath
 .project
