@@ -1,12 +1,27 @@
 ## cumulocity-microservice-archetype
 
-Maven archetype to generate cumulocity microservice project. Based on https://github.com/SoftwareAG/cumulocity-clients-java and https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
+Maven archetype to generate cumulocity microservice project. Based on https://github.com/Cumulocity-IoT/cumulocity-clients-java and https://cumulocity.com/guides/microservice-sdk/java/#java-microservice 
 
 The project will contain following project structure:
 
 ```console
 project
 |-- pom.xml
+|-- .gitignore
+|-- README.md
+|-- initializr.ps1
+|-- initializr.sh
+|-- .vscode
+|    `-- launch.json
+|-- .idea
+|    `-- runConfigurations
+|        `-- Spring_Boot-App.xml
+|-- .github
+    |-- agents
+    |    `-- ps-java-microservice.agent.md
+     `-- workflows
+        |-- maven_build.yml
+         `-- maven_build_deploy.yml
 `-- src
     |-- main
     |  | -- java
@@ -25,31 +40,27 @@ project
     |        `-- logging.xml
 ```
 
-The project contains also an example REST controller which must be replaced or removed depending on your further development.
-However the complete project is directly runnable without any additional changes. It uses also some best practices like:
+The project contains also two initializr scripts one for windows and one for linux/macOS. This script fetches the cumulocity microservice bootstrap credentials and stores the environment variables for local development in `.env/dev.env`. It also contains example code like a REST controller which must be replaced or removed depending on your further development.
+
+However the generated project is directly runnable and prepared for VSCode and IntelliJ IDEA without any additional changes. It includes also some best practices like:
 
 - using spring profiles (dev, test and prod)
-- using local configured application-dev.properties to run localy on development env
+- using specific launch configurations for VSCode and IntelliJ IDEA and externalized cumulocity bootstrap configuration
+- using best practices for gitignore and README.md
 - using Logback configuration file
 - using current java cumulocity microservice SDK + configuration via cumulocity.json
 - using custom banner with cumulocity SDK version
 - using JUnit 5 and SpringBootTest to check if context load is successful
+- using GitHub Actions for CI/CD to build and deploy the microservice to cumulocity tenant
+- using Copilot custom agent to support you during development
 
-In order to make it even faster to setup your project, the archetype contains a post-generation script which registers your microservice automatically on your tenant. This step is optional.
-
-The post-generation script does following steps: 
-
-- Generate microservice application on tenant
-- Subscribes microservice to tenant
-- Acquires microservice credentials
-- writes all information to application-dev.properties
 
 ## Prerequisites
 
-- Java installed >= 11
+- Java installed >= 17
 - Maven installed >= 3.6
-- Cumulocity IoT Tenant >= 1010.0.0
-- Cumulocity IoT User Credentials (Base64 encoded)
+- Cumulocity IoT Tenant >= 2025.1.0
+- [go-c8y-cli](https://goc8ycli.netlify.app/) installed and configured
 
 
 ## Run
@@ -80,15 +91,17 @@ cd ..
 
 Generate C8y miroservice project using interactive mode
 
-```console
-mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype
+Most Terminals:
+```terminal
+mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype -DinteractiveMode=true
 ```
 
-**Note:** In case you use [go-c8y-cli](https://goc8ycli.netlify.app/) you can use directly following environment variables `C8Y_BASEURL` and `C8Y_HEADER_AUTHORIZATION` in the command:
-
-```console
-mvn archetype:generate -DarchetypeGroupId=cumulocity.microservice -DarchetypeArtifactId=cumulocity-microservice-archetype -DdevC8yBaseURL=%C8Y_BASEURL% -DdevC8yUserCredentialsBASE64=%C8Y_HEADER_AUTHORIZATION%
+Powershell:
+```terminal
+mvn archetype:generate "-DarchetypeGroupId=cumulocity.microservice" "-DarchetypeArtifactId=cumulocity-microservice-archetype" "-DinteractiveMode=true"
 ```
+
+![Archetype Generation](doc/archetypeTerminal.gif)
 
 ### Step 1: Define your microservice name
 
@@ -109,9 +122,7 @@ If your microservice name has more than one words, seperate the words by '-'
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 1013.0.0
-[INFO] Using property: devC8yBaseURL = null
-[INFO] Using property: devC8yUserCredentialsBASE64 = null
+[INFO] Using property: c8yVersion = 2025.81.0
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 ```
 
@@ -125,16 +136,14 @@ You can now just hit enter to continue with default or enter your own artificat 
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 1013.0.0
-[INFO] Using property: devC8yBaseURL = null
-[INFO] Using property: devC8yUserCredentialsBASE64 = null
+[INFO] Using property: c8yVersion = 2025.81.0
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 ```
 
 You can now just hit enter to continue with default or enter your own artificat id. **!!! Beaware that '-' can't be used at java packages. In that case you must replace '-' with '_'. !!!**
 
-### Step 4.1: Confirm your configuration with 'Y' without running post-generation script
+### Step 4: Confirm your configuration with 'Y'
 
 ```console
 [INFO] Generating project in Interactive mode
@@ -142,16 +151,14 @@ You can now just hit enter to continue with default or enter your own artificat 
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 1013.0.0
-[INFO] Using property: devC8yBaseURL = null
-[INFO] Using property: devC8yUserCredentialsBASE64 = null
+[INFO] Using property: c8yVersion = 2025.81.0
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 Confirm properties configuration:
 microserviceName: hello-devices
 groupId: cumulocity.microservice
 version: 1.0.0-SNAPSHOT
-c8yVersion: 1013.0.0
+c8yVersion: 2025.81.0
 devC8yBaseURL: null
 devC8yUserCredentialsBASE64: null
 artifactId: cumulocity-microservice-hello-devices
@@ -159,43 +166,10 @@ package: cumulocity.microservice.hello_devices
  Y: : Y
 ```
 
-Now you have created your microservice project successfully! In case your devC8yBaseURL and devC8yUserCredentialsBASE64 variable wasn't set, you can continue with Step 4.2, in order to initialze them via interactive mode and run the post-generation script. However running this script is optional!
+Now you have created your microservice project successfully!
 
-_IMPORTANT!!!_
 
-If you haven't setup your application-dev.properties to a specific tenant, the predefined unit test will not succeed! This unit test is starting the spring boot application and checks if the application is successfully starting. The microservice can't start if the c8y configuration isn't setup. However you can build with skipping the test by:
-
-```
-mvn clean install -Dmaven.test.skip=true
-```
-
-### Step 4.2: Confirm your configuration with 'N' with running post-generation script
-
-And repeate step 1 - 3 and insert devC8yBaseURL and devC8yUserCredentialsBASE64
-
-```console
- Y: : N
-Define value for property 'microserviceName': hello-devices
-Define value for property 'groupId' cumulocity.microservice: :
-Define value for property 'version' 1.0.0-SNAPSHOT: :
-Define value for property 'c8yVersion' 1013.0.0: :
-Define value for property 'devC8yBaseURL': https://ms-template.eu-latest.cumulocity.com
-Define value for property 'devC8yUserCredentialsBASE64': Basic XXXXX
-Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
-Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
-Confirm properties configuration:
-microserviceName: hello-devices
-groupId: cumulocity.microservice
-version: 1.0.0-SNAPSHOT
-c8yVersion: 1013.0.0
-devC8yBaseURL: https://ms-template.eu-latest.cumulocity.com
-devC8yUserCredentialsBASE64: Basic XXXXX
-artifactId: cumulocity-microservice-hello-devices
-package: cumulocity.microservice.hello_devices
- Y: : Y
-```
-
-### Step 5: Build your fresh generated project
+### Step 5: Open your fresh generated project
 
 Go to the project folder
 
@@ -203,28 +177,44 @@ Go to the project folder
 cd cumulocity-microservice-hello-devices/
 ```
 
-and build the project:
 
-```console
-mvn install
+### Step 6: Initialize your microservice to your development tenant (create, subscribe and retrieve bootstrap credentials)
+
+Create the microservice on your tenant and retrieve the bootstrap credentials by running the initializr script. The script uses the go-c8y-cli, so make sure you have it installed and configured session to your development tenant. The script stores the environment variables in `.env/dev.env` for local development.
+
+If you use Windows run:
+
+```terminal
+.\initializer.ps1
 ```
 
-Running the microservice locally you have to add microservice service user to application-dev.properties, have you run the script with step 4.2 the properties are automatically configured
+on Linux or Mac run:
 
-```console
-C8Y.bootstrap.tenant=<tenant ID>
-C8Y.baseURL=<URL>
-C8Y.bootstrap.user=<service-user>
-C8Y.bootstrap.password=<service-user-password>
+```shell
+. ./initializer.sh
 ```
 
-### Step 6: Start the microservice and test
+![Archetype Generation](doc/initialzr.gif)
 
-Go to target and run the spring boot appliation
+_IMPORTANT!!!_
 
-java -jar cumulocity-microservice-hello-devices-1.0.0-SNAPSHOT.jar
+The initializer script is optional. You can also manually create the microservice on your tenant and insert the credentials in your environment variables. However the script makes it much more comfortable. It also can be re-run if you need to re-create the microservice or retrieve the bootstrap credentials again or on another tenant.
 
-Open the browser and open link http://localhost:8080/api/hello/devices, you have to insert your Cumulocity credentials, keep in mind to set the tenant Id in front of your user name like t2134/alexander.pester@softwareag.com.
+### Step 7: Run the microservice
+
+You should see the run configurations in your IDE, after initializing your project.
+
+In **VSCode** you can find the run configuration in `.vscode/launch.json`. You can start the microservice by pressing `F5` or selecting `Run and Debug` from the sidebar and clicking on `Start Debugging`.
+
+For **IntelliJ** IDEA you can find the run configuration in `.idea/runConfigurations/Spring_Boot-App.xml`. You can start the microservice by opening the `Run` menu and selecting `Run 'Spring_Boot-App'`.
+
+After starting the microservice you should see in the console output something like:
+
+```console
+2024-06-12 10:15:30.123  INFO 12345 --- [           main] c.c.microservice.hello_devices.App         : Started App in 3.456 seconds (JVM running for 4.567)
+```
+
+Open the browser and open link http://localhost:8080/api/hello/devices, you have to insert your Cumulocity credentials, keep in mind to set the tenant Id in front of your user name like t2134/alexander.pester@cumulocity.com.
 
 Now your microservice is ready to evolve!!!
 
@@ -234,23 +224,22 @@ For building docker container please change property in pom file to:
 <c8y.docker.skip>false</c8y.docker.skip>
 ```
 
-## Live Demo
-
-https://youtu.be/2j21ULZbtlg
+The maven build will create a docker image!
 
 ## Authors 
 
-[Alexander Pester](mailto:alexander.pester@softwareag.com)
+[Alexander Pester](mailto:alexander.pester@cumulocity.com)
 
-## Disclaimer
+# Useful links 
 
-These tools are provided as-is and without warranty or support. They do not constitute part of the Software AG product suite. Users are free to use, fork and modify them, subject to the license agreement. While Software AG welcomes contributions, we cannot guarantee to include every contribution in the master project.
+📘 Explore the Knowledge Base   
+Dive into a wealth of Cumulocity IoT tutorials and articles in our [Tech Community](https://techcommunity.cumulocity.com).  
 
-## Contact
+💡 Get Expert Answers    
+Stuck or just curious? Ask the Cumulocity IoT experts directly on our [Forum](https://techcommunity.cumulocity.com/c/forum/5).   
 
-For more information you can Ask a Question in the [TECHcommunity Forums](http://tech.forums.softwareag.com/techjforum/forums/list.page?product=cumulocity).
+🚀 Try Cumulocity IoT    
+See Cumulocity IoT in action with a [Free Trial](https://www.cumulocity.com/start-your-journey/free-trial).   
 
-You can find additional information in the [Software AG TECHcommunity](https://tech.forums.softwareag.com/tag/Cumulocity-IoT).
-
-_________________
-Contact us at [TECHcommunity](mailto:technologycommunity@softwareag.com?subject=Github/SoftwareAG) if you have any questions.
+✍️ Share Your Feedback    
+Your input drives our innovation. If you find a bug, please create an issue in the repository. If you'd like to share your ideas or feedback, please post them [here](https://techcommunity.cumulocity.com/c/feedback-ideas/14). 

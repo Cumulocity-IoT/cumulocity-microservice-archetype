@@ -41,15 +41,8 @@ under the License.
       <defaultValue>cumulocity.microservice.${microserviceName}</defaultValue>
     </requiredProperty>
     <requiredProperty key="c8yVersion" >
-      <defaultValue>1017.0.437</defaultValue>
-    </requiredProperty>
-    
-    <!-- Properies for creating microservice on specific tenant -->
-    <requiredProperty key="devC8yBaseURL">
-      <defaultValue>null</defaultValue>
-    </requiredProperty>
-    <requiredProperty key="devC8yUserCredentialsBASE64">
-      <defaultValue>null</defaultValue>
+      <validationRegex>^(?:202[6-9]|20[3-9]\d|2[1-9]\d{2}|[3-9]\d{3}|\d{5,})\.(?:[2-9]\d*)\.(?:\d+)$</validationRegex>
+      <defaultValue>2025.81.0</defaultValue>
     </requiredProperty>
   </requiredProperties>
 
@@ -69,13 +62,23 @@ under the License.
     <fileSet filtered="true" packaged="true">
       <directory>src/test/java</directory>
     </fileSet>
-
-  <fileSet encoding="UTF-8">
-  <directory>.run</directory>
-  <includes>
-    <include>*.xml</include>
-  </includes>
-  </fileSet>
-
+    <fileSet filtered="true" packaged="false">
+      <directory>.vscode</directory>
+    </fileSet>
+    <fileSet filtered="true" packaged="false">
+      <directory>.idea</directory>
+    </fileSet>
+    <fileSet filtered="true" packaged="false">
+      <directory>.github</directory>
+    </fileSet>
+    <fileSet filtered="true" packaged="false">
+      <directory/>
+      <includes>
+        <include>*.ps1</include>
+        <include>*.sh</include>
+        <include>gitignore</include>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
   </fileSets>
 </archetype-descriptor>

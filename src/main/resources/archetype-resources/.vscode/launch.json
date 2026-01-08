@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-App<${artifactId}>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "${package}.App",
+            "projectName": "${artifactId}",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env/dev.env",
+            "vmArgs": "-Dlogging.config=src/main/configuration/${artifactId}-logging.xml"
+        }
+    ]
+}

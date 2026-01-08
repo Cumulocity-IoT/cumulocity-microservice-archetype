@@ -1,0 +1,314 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: C:\Users\apes\Development\workspace
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 262
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 29
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: cumulocity-microservice-archetype
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1247
+    content: "\e[?9001h\e[?1004h"
+  - delay: 234
+    content: "\e[?25l\e[2J\e[m\e[HWindows PowerShell\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[4;1HInstall the latest PowerShell for new features and improvements! https://aka.ms/PSWindows\e]0;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\a\e[?25h"
+  - delay: 21
+    content: "\e[?25l\e[6;1H\e[?25h"
+  - delay: 993
+    content: 'PS C:\Users\apes\Development\workspace> '
+  - delay: 879
+    content: "\e[?25l"
+  - delay: 21
+    content: "\e[93mmv\e[97m\e[2m\e[3mn clean install\e[6;43H\e[?25h"
+  - delay: 15
+    content: "\e[?25l\e[m\e[91m\e[6;39H> \e[93mmvn \e[37marchetype:generate \e[36m\"-DarchetypeGroupId=cumulocity.microservice\" \"-DarchetypeArtifactId\e[97m\e[2m\e[3m=cumulocity-microservice-archetype\" \"-DinteractiveMode=true\"\e[6;131H\e[?25h"
+  - delay: 16
+    content: "\e[?25l\e[m\e[93m\e[6;41Hmvn \e[37marchetype:generate \e[36m\"-DarchetypeGroupId=cumulocity.microservice\" \"-DarchetypeArtifactId=cumulocity-microservice-archetype\" \"-DinteractiveMode=true\e[97m\e[2m\e[3m\""
+  - delay: 15
+    content: "\e[m\b\e[?25h"
+  - delay: 16
+    content: "\e[?25l\e[6;39H> \e[93mmvn \e[37marchetype:generate \e[36m\"-DarchetypeGroupId=cumulocity.microservice\" \"-DarchetypeArtifactId=cumulocity-microservice-archetype\" \"-DinteractiveMode=true\"\e[?25h"
+  - delay: 1858
+    content: "\e[m\r\n"
+  - delay: 5099
+    content: '['
+  - delay: 8
+    content: "\e[38;5;12mINFO\e[m] Scanning for projects...\r\n"
+  - delay: 2174
+    content: '['
+  - delay: 14
+    content: "\e[38;5;12mINFO\e[m] \r\n[\e[38;5;12mINFO\e[m] \e[38;5;15m------------------< \e[38;5;6morg.apache.maven:standalone-pom \e[38;5;15m>-------------------\e[m\r\n[\e[38;5;12mINFO\e[m] \e[38;5;15mBuilding Maven Stub Project (No POM) 1\e[m\r\n[\e[38;5;12mINFO\e[m] \e[38;5;15m--------------------------------[ pom ]---------------------------------\r\n"
+  - delay: 22
+    content: "\e[m["
+  - delay: 9
+    content: "\e[38;5;12mINFO\e[m] \r\n[\e[38;5;12mINFO\e[m] \e[38;5;15m>>> \e[38;5;2mmaven-archetype-plugin:3.3.1:generate \e[38;5;15m(default-cli) > generate-sources \e[m@ \e[38;5;6mstandalone-pom \e[38;5;15m>>>\e[m\r\n[\e[38;5;12mINFO\e[m] \r\n["
+  - delay: 17
+    content: "\e[38;5;12mINFO\e[m] \e[38;5;15m<<< \e[38;5;2mmaven-archetype-plugin:3.3.1:generate \e[38;5;15m(default-cli) < generate-sources \e[m@ \e[38;5;6mstandalone-pom \e[38;5;15m<<<\e[m\r\n[\e[38;5;12mINFO\e[m] \r\n[\e[38;5;12mINFO\e[m] \r\n[\e[38;5;12mINFO\e[m] \e[38;5;15m--- \e[38;5;2mmaven-archetype-plugin:3.3.1:generate \e[38;5;15m(default-cli) \e[m@ \e[38;5;6mstandalone-pom \e[38;5;15m---\r\n"
+  - delay: 4663
+    content: "\e[m["
+  - delay: 14
+    content: "\e[38;5;12mINFO\e[m] Generating project in Interactive mode\r\n"
+  - delay: 687
+    content: '['
+  - delay: 15
+    content: "\e[38;5;12mINFO\e[m] Archetype [cumulocity.microservice:cumulocity-microservice-archetype:1.1.0-SNAPSHOT] found in catalog local\r\n"
+  - delay: 255
+    content: >-
+      Define value for property 'microserviceName' (should match expression
+      '^[a-z0-9-]{1,23}$'): 
+  - delay: 1635
+    content: h
+  - delay: 154
+    content: e
+  - delay: 171
+    content: l
+  - delay: 146
+    content: l
+  - delay: 200
+    content: o
+  - delay: 957
+    content: '-'
+  - delay: 306
+    content: d
+  - delay: 187
+    content: e
+  - delay: 211
+    content: v
+  - delay: 118
+    content: i
+  - delay: 106
+    content: c
+  - delay: 215
+    content: e
+  - delay: 210
+    content: s
+  - delay: 1978
+    content: "\r\n"
+  - delay: 21
+    content: "[\e[38;5;12mINFO\e[m] Using property: groupId = cumulocity.microservice\r\n[\e[38;5;12mINFO\e[m] Using property: version = 1.0.0-SNAPSHOT\r\n[\e[38;5;12mINFO\e[m] Using property: c8yVersion = 2025.81.0\r\nDefine value for property 'artifactId' cumulocity-microservice-hello-devices: "
+  - delay: 3527
+    content: "\r\n"
+  - delay: 16
+    content: >-
+      Define value for property 'package'
+      cumulocity.microservice.hello-devices: 
+  - delay: 1717
+    content: c
+  - delay: 97
+    content: u
+  - delay: 196
+    content: m
+  - delay: 173
+    content: u
+  - delay: 167
+    content: l
+  - delay: 178
+    content: o
+  - delay: 175
+    content: c
+  - delay: 126
+    content: i
+  - delay: 161
+    content: t
+  - delay: 234
+    content: 'y'
+  - delay: 923
+    content: .
+  - delay: 413
+    content: m
+  - delay: 162
+    content: i
+  - delay: 261
+    content: c
+  - delay: 254
+    content: r
+  - delay: 128
+    content: o
+  - delay: 362
+    content: s
+  - delay: 153
+    content: e
+  - delay: 70
+    content: r
+  - delay: 230
+    content: v
+  - delay: 112
+    content: i
+  - delay: 126
+    content: c
+  - delay: 182
+    content: e
+  - delay: 1332
+    content: .
+  - delay: 293
+    content: h
+  - delay: 160
+    content: e
+  - delay: 142
+    content: l
+  - delay: 125
+    content: l
+  - delay: 182
+    content: o
+  - delay: 3354
+    content: d
+  - delay: 174
+    content: e
+  - delay: 160
+    content: v
+  - delay: 117
+    content: i
+  - delay: 84
+    content: c
+  - delay: 199
+    content: e
+  - delay: 179
+    content: s
+  - delay: 1407
+    content: "\r\nConfirm properties configuration:\r\nmicroserviceName: hello-devices\r\ngroupId: cumulocity.microservice\r\nversion: 1.0.0-SNAPSHOT\r\nc8yVersion: 2025.81.0\r\nartifactId: cumulocity-microservice-hello-devices\r\npackage: cumulocity.microservice.hellodevices"
+  - delay: 12
+    content: "\r\n Y:\e[1C"
+  - delay: 1097
+    content: 'y'
+  - delay: 413
+    content: "\r\n"
+  - delay: 6
+    content: "[\e[38;5;12mINFO\e[m] ----------------------------------------------------------------------------\r\n[\e[38;5;12mINFO\e[m] Using following parameters for creating project from Archetype: cumulocity-microservice-archetype:1.1.0-SNAPSHOT\e[K\r\n[\e[38;5;12mINFO\e[m] --------------------\e[K--------------------------------------------------------\r\n[\e[38;5;12mINFO\e[m] Parameter: groupId, Value: cumulocity.microservice\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: artifactId, Value: cumulocity-microservice-hello-devices\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: version, Value: 1.0.0-SNAPSHOT\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: package, Value: cumulocity.microservice.hellodevices\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: packageInPathFormat, Value: cumulocity/microservice/hellodevices\e[K\r\n[\e[38;5;12mINF\e[K\e[m\e[38;5;12mO\e[m] Parameter: package, Value: cumulocity.microservice.hellodevices\r\n[\e[38;5;12mINFO\e[m] Parameter: microserviceName, Value: hello-devices\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: groupId, Value: cumulocity.microservice\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: artifactId, Value: cumulocity-microservice-hello-devices\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: version, Value: 1.0.0-SNAPSHOT\e[K\r\n[\e[38;5;12mINFO\e[m] Parameter: c8yVersion, Value: 2025.81.0\e[K\r"
+  - delay: 6
+    content: |+
+
+  - delay: 21
+    content: '['
+  - delay: 6
+    content: "\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\src\\main\\java\\cumulocity\\microservice\\hellodevices\r\n"
+  - delay: 16
+    content: "[\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\src\\main\\configuration\r"
+  - delay: 11
+    content: "\n[\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\src\\main\\resources\e[K\r\n"
+  - delay: 19
+    content: '['
+  - delay: 5
+    content: "\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\src\\main\\docker\r"
+  - delay: 6
+    content: |+
+
+  - delay: 11
+    content: "[\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\src\\test\\java\\cumulocity\\microservice\\hellodevices\r"
+  - delay: 5
+    content: "\n[\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\.vscode\r"
+  - delay: 11
+    content: "\n[\e[38;5;11mWARNING\e[m] Don't override file C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\\.idea\e[K\r\n"
+  - delay: 33
+    content: "[\e[38;5;12mINFO\e[m] Project created from Archetype in dir: C:\\Users\\apes\\Development\\workspace\\cumulocity-microservice-hello-devices\r"
+  - delay: 5
+    content: "\n[\e[38;5;12mINFO\e[m] \e[38;5;15m------------------------------------------------------------------------\e[K\r\e[m\n[\e[38;5;12mINFO\e[m] \e[38;5;10mBUILD SUCCESS\e[K\r\e[m\n[\e[38;5;12mINFO\e[m] \e[38;5;15m------------------------------------------------------------------------\e[K\r\e[m\n"
+  - delay: 5
+    content: "[\e[38;5;12mINFO\e[m] Total time:  40.927 s\r\n[\e[38;5;12mINFO\e[m] Finished at: 2025-11-26T15:12:53+01:00\e[K\r\n[\e[38;5;12mINFO\e[m] \e[38;5;15m------------------------------------------------------------------------\e[K\r"
+  - delay: 5
+    content: "\e[m\n"
+  - delay: 159
+    content: 'PS C:\Users\apes\Development\workspace> '
+

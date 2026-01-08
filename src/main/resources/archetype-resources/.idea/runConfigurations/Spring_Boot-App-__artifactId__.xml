@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration name="Spring Boot-App${artifactId}" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="${artifactId}" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="${package}.App" />
+    <option name="VM_PARAMETERS" value="-Dlogging.config=src/main/configuration/${artifactId}-logging.xml" />
+    <shortenClasspath name="MANIFEST" />
+    <option name="envFilePaths">
+      <option value="$PROJECT_DIR$/.env/dev.env" />
+    </option>
+    <selectedOptions>
+      <option name="environmentVariables" />
+    </selectedOptions>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
