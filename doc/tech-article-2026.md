@@ -178,10 +178,7 @@ The interactive mode will prompt you for:
    - ⚠️ **Important**: Replace dashes with underscores for valid Java packages
    - Example: `cumulocity.microservice.hello_devices`
 
-4. **Cumulocity Version**: Default is `2025.81.0`
-   - Press Enter to use latest or specify your version
-
-5. **Confirm**: Review your configuration and type `Y` to generate
+4. **Confirm**: Review your configuration and type `Y` to generate
 
 ### Step 4: Initialize with Bootstrap Credentials (NEW!)
 
@@ -196,7 +193,7 @@ cd cumulocity-microservice-hello-devices
 **Linux/macOS (Bash):**
 ```bash
 cd cumulocity-microservice-hello-devices
-./initializr.sh
+. ./initializr.sh
 ```
 
 The script will:
@@ -248,16 +245,19 @@ You should see a JSON array of all devices from your tenant. **Congratulations!*
 
 ### Step 7: Push to GitHub and Enable CI/CD
 
-1. Initialize a Git repository
+1. Initialize a Git repository `git init`
 2. Create a remote repository on a platform like GitHub, GitLab, or Bitbucket
-3. Check the prepared `.gitignore` to ensure sensitive files are excluded
-4. Push your code to the remote repository
-5. If you use GitHub, the included GitHub Actions workflows will automatically run on pushes to `main` and `develop` branches, however you need to add following secrets to your repository settings:
+3. Check the prepared `.gitignore` to ensure it meets your needs
+4. Add and commit your code `git add . && git commit -m "Initial commit"`
+5. Connect to your remote `git remote add origin <your-repository-url>`
+6. Push your code to the remote repository `git push -u origin main`
+7. If you use GitHub, the included GitHub Actions workflows will automatically run on pushes to `main` and `develop` branches, however you need to add following secrets to your repository settings: Secrets and variables > Actions > New repository secret
 ```
       secrets.C8Y_HOST
       secrets.C8Y_USER
       secrets.C8Y_PASSWORD
 ```
+7. Enable the docker in the pom.xml: `<c8y.docker.skip>false</c8y.docker.skip>`
 
 
 ## Key Differences from the 2022 Version

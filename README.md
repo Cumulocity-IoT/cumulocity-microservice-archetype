@@ -218,10 +218,10 @@ Open the browser and open link http://localhost:8080/api/hello/devices, you have
 
 Now your microservice is ready to evolve!!!
 
-For building docker container please change property in pom file to:
+For building without docker container please change property in pom file to:
 
 ```console
-<c8y.docker.skip>false</c8y.docker.skip>
+<c8y.docker.skip>true</c8y.docker.skip>
 ```
 
 The maven build will create a docker image!

@@ -18,7 +18,7 @@
 		<spring-boot-dependencies.version>3.4.2</spring-boot-dependencies.version>
 		<c8y.version>${c8yVersion}</c8y.version>
 		<microservice.name>${microserviceName}</microservice.name>
-		<c8y.docker.skip>true</c8y.docker.skip>
+		<c8y.docker.skip>false</c8y.docker.skip>
 	</properties>
 
 	<dependencyManagement>
