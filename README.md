@@ -224,8 +224,6 @@ For building without docker container please change property in pom file to:
 <c8y.docker.skip>true</c8y.docker.skip>
 ```
 
-The maven build will create a docker image!
-
 ## Authors 
 
 [Alexander Pester](mailto:alexander.pester@cumulocity.com)

@@ -230,6 +230,8 @@ mvn clean package
 java -jar target/cumulocity-microservice-hello-devices-1.0.0-SNAPSHOT.jar
 ```
 
+Beaware that a docker image is also created during the build process, however the docker build can be skipped by changing the property in the pom.xml to `<c8y.docker.skip>true</c8y.docker.skip>`
+
 ### Step 6: Test Your Microservice
 
 Open your browser and navigate to:
@@ -257,7 +259,6 @@ You should see a JSON array of all devices from your tenant. **Congratulations!*
       secrets.C8Y_USER
       secrets.C8Y_PASSWORD
 ```
-7. Enable the docker in the pom.xml: `<c8y.docker.skip>false</c8y.docker.skip>`
 
 
 ## Key Differences from the 2022 Version
