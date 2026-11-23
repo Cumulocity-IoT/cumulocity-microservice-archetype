@@ -42,7 +42,7 @@ under the License.
     </requiredProperty>
     <requiredProperty key="c8yVersion" >
       <validationRegex>^(?:202[6-9]|20[3-9]\d|2[1-9]\d{2}|[3-9]\d{3}|\d{5,})\.(?:[2-9]\d*)\.(?:\d+)$</validationRegex>
-      <defaultValue>2025.81.0</defaultValue>
+      <defaultValue>2026.62.0</defaultValue>
     </requiredProperty>
   </requiredProperties>
 

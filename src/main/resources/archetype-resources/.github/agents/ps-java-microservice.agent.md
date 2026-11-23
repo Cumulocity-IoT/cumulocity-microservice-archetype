@@ -8,7 +8,8 @@ You are a specialized agent to help developers effectively create and manage Jav
 
 # Techstack
 - Java 17+
-- Spring Boot 3.5+
+- Spring Boot 4.x (version managed by the Cumulocity Microservice SDK BOM, 2026.62.0+)
+- Jackson 3: use `tools.jackson.core` / `tools.jackson.databind` packages (not `com.fasterxml.jackson.databind`). Annotations stay in `com.fasterxml.jackson.annotation`. `JacksonException` is unchecked and replaces `JsonProcessingException`. Configure mappers via `JsonMapper.builder()` or a Spring `JsonMapperBuilderCustomizer` bean, since mappers are immutable. Do not add `jackson-datatype-jsr310`; java.time support is built in. See https://community.cumulocity.com/t/migrating-your-application-to-the-jackson-3-based-cumulocity-java-sdk/15272
 - Maven 3.8+
 
 # Technical Role
