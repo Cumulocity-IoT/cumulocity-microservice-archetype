@@ -111,16 +111,19 @@ project/
     │       └── Dockerfile
     └── test/
         └── java/
-            └── AppTest.java                # JUnit 5 + SpringBootTest
+            └── AppTest.java                # JUnit Jupiter + SpringBootTest
 ```
 
 ### 🛠️ Updated Dependencies Spring Boot and Cumulocity SDK versions
 
-The archetype now uses the latest stable version of Spring Boot 3.4 and the Cumulocity Microservice SDK 2025.X, ensuring you start with the most up-to-date libraries and features.
+The archetype now uses Cumulocity Microservice SDK 2026.62.0, which is based on Spring Boot 4 and Jackson 3, so you start with the most up-to-date libraries and features.
 
 - Java 17
-- Spring Boot 3.4
-- Cumulocity Microservice SDK 2025.X
+- Spring Boot 4.1 (managed by the SDK BOM)
+- Jackson 3 (`tools.jackson.*`, annotations remain in `com.fasterxml.jackson.annotation`)
+- Cumulocity Microservice SDK 2026.62.0
+
+If you migrate an existing microservice from an older SDK, follow the [Jackson 3 migration guide for the Cumulocity Java SDK](https://community.cumulocity.com/t/migrating-your-application-to-the-jackson-3-based-cumulocity-java-sdk/15272).
 
 
 ## Prerequisites

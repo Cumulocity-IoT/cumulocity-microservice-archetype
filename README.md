@@ -122,7 +122,7 @@ If your microservice name has more than one words, seperate the words by '-'
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 2025.81.0
+[INFO] Using property: c8yVersion = 2026.62.0
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 ```
 
@@ -136,7 +136,7 @@ You can now just hit enter to continue with default or enter your own artificat 
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 2025.81.0
+[INFO] Using property: c8yVersion = 2026.62.0
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 ```
@@ -151,14 +151,14 @@ You can now just hit enter to continue with default or enter your own artificat 
 Define value for property 'microserviceName': hello-devices
 [INFO] Using property: groupId = cumulocity.microservice
 [INFO] Using property: version = 1.0.0-SNAPSHOT
-[INFO] Using property: c8yVersion = 2025.81.0
+[INFO] Using property: c8yVersion = 2026.62.0
 Define value for property 'artifactId' cumulocity-microservice-hello-devices: :
 Define value for property 'package' cumulocity.microservice.hello-devices: : cumulocity.microservice.hello_devices
 Confirm properties configuration:
 microserviceName: hello-devices
 groupId: cumulocity.microservice
 version: 1.0.0-SNAPSHOT
-c8yVersion: 2025.81.0
+c8yVersion: 2026.62.0
 devC8yBaseURL: null
 devC8yUserCredentialsBASE64: null
 artifactId: cumulocity-microservice-hello-devices
